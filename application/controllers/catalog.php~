@@ -1,0 +1,25 @@
+<?php
+
+class Catalog extends CI_Controller {
+
+  $class = '';
+
+  public function view($page = 'index') {
+    if ( ! file_exists('application/views/.'$class'./'.$page.'.php')) {
+      // Whoops, we don't have a page for that!
+      show_404();
+    }
+
+    $this->load->helper('url');
+    if( $page != 'index' ) {
+      $data['title'] = ucfirst($page); // Capitalize the first letter
+    } else {
+      $data['title'] = '';
+    }
+    $data['loggedin'] = false;
+    $this->load->view('templates/header', $data);
+    $this->load->view('catalog/'.$page, $data);
+    $this->load->view('templates/footer', $data);
+  }
+}
+?>

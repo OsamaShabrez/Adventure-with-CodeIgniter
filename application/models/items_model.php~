@@ -1,0 +1,20 @@
+<?php
+
+class Items_model extends CI_Model {
+
+  public function __construct() {
+    $this->load->database();
+  }
+
+  public function get_catalog( $page = FALSE ) {
+    if( $page === FALSE ) {
+      $query = $this->db->get( '', 0, 9 );
+      return $query->result_array();
+    }
+    $query = $this->db->get_where( '', $page * 2, ($page + 1) * 2 );
+    $this->db->order_by("id", "desc"); 
+    return $query->result_array();
+  }
+}
+
+?>

@@ -1,0 +1,100 @@
+<!DOCTYPE html5>
+<html>
+  <head>
+    <title><?php echo $title; ?> - E-Value Mart</title>
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>fav-icon.ico" type="image/ico">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
+    <script type="text/javascript" src="<?php echo base_url(); ?>javascript/boxOver.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  </head>
+  <body>
+    <div id="main_container">
+      <div class="top_bar">
+      </div>
+      <div id="header">
+	<div id="logo">
+	  <a href="index.php"><img src="<?php echo base_url(); ?>images/logo.png" alt="" title="" border="0" width="237" height="140" /></a>
+	</div>
+	<div class="oferte_content">
+	  <div class="top_divider">
+	    <img src="<?php echo base_url(); ?>images/header_divider.png" alt="" title="" width="1" height="164" />
+	  </div>
+	<div class="oferta">
+	  <div class="oferta_content">
+	    <img src="<?php echo base_url(); ?>images/laptop.png" width="94" height="92" border="0" class="oferta_img" />
+	    <div class="oferta_details">
+	      <div class="oferta_title">Samsung GX 2004 LM</div>
+		<div class="oferta_text">
+		  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+		</div>
+	      <a href="details.php" class="details">details</a>
+	    </div>
+	  </div>
+	  <div class="oferta_pagination">
+	    <span class="current">1</span>
+	    <a href="#?page=2">2</a>
+	    <a href="#?page=3">3</a>
+	    <a href="#?page=3">4</a>
+	    <a href="#?page=3">5</a>  
+	  </div>        
+	</div>
+	<div class="top_divider">
+	  <img src="<?php echo base_url(); ?>images/header_divider.png" alt="" title="" width="1" height="164" />
+	</div>
+      </div> <!-- end of oferte_content-->
+    </div>
+    <div id="main_content">
+      <div id="menu_tab">
+	<div class="left_menu_corner">
+	</div>
+      <ul class="menu">
+	<li><a href="index.php" class="nav1">Home</a></li>
+	<li class="divider"></li>
+	<li><a href="privacy-policy.php" class="nav2">Privacy Policy</a></li>
+	<li class="divider"></li>
+	<li><a href="order.php" class="nav3">How to Order</a></li>
+	<li class="divider"></li>
+	<?php
+	  if($loggedin) {
+	    echo '<li><a href="my-account.php" class="nav4">My account</a></li>';
+	    echo '<li class="divider"></li>';
+	    echo '<li><a href="logout.php" class="nav4">Logout</a></li>';
+	  } else {
+	    echo '<li><a href="sign-in.php" class="nav4">Sign In</a></li>';
+	    echo '<li class="divider"></li>';
+	    echo '<li><a href="sign-up" class="nav4">Sign Up</a></li>';
+	  }
+	?>
+	<li class="divider"></li>                         
+	<li><a href="shipping-returns.php" class="nav5">Shipping & Returns</a></li>
+	<li class="divider"></li>
+	<li><a href="contact.php" class="nav6">Contact Us</a></li>
+	<li class="divider"></li>
+	<li><a href="about.php" class="nav6">About</a></li>
+      </ul>
+      <div class="right_menu_corner">
+      </div>
+    </div><!-- end of menu tab -->
+    <div class="left_content">
+      <div class="title_box">Categories</div>
+	<ul class="left_menu">
+	  <?php
+	  $query = "SELECT FamilyID,FamilyName FROM productfamily ORDER BY FamilyName ASC";
+	  $resultset = mysql_query($query);
+	  $odd_even = false;
+	  while($row = mysql_fetch_array($resultset)) {
+	  if($odd_even) {
+	  echo "<li class='even'><a href='index.php?Fid={$row['FamilyID']}&&family=" . urlencode($row['FamilyName']) . "'>{$row['FamilyName']}</a></li>";
+	  $odd_even = false;
+	  } else {
+	  echo "<li class='odd'><a href='index.php?Fid={$row['FamilyID']}&&family=" . urlencode($row['FamilyName']) . "'>{$row['FamilyName']}</a></li>";
+	  $odd_even = true;
+	  }
+	  }
+	  ?>
+	</ul>
+	<div class="banner_adds">
+	  <a href="#"><img src="<?php echo base_url(); ?>images/bann2.jpg" alt="" title="" border="0" /></a>
+	</div>
+      </div><!-- end of left content -->
+      <?php if($msg != "") echo $msg; ?>
