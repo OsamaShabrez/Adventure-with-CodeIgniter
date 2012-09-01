@@ -38,9 +38,11 @@
 |
 */
 
-$route['category/(:any)'] = 'catalog/category/$1';
-$route['page/(:any)'] = 'catalog/page/$1';
 $route['default_controller'] = "catalog/view";
+$route['page/processcontactform']   = 'staticpages/processcontactform';
+$route['page/contact-us']   = 'staticpages/showcontactform';
+$route['page/(:any)']        = 'staticpages/page/$1';
+$route['category/(:any)']    = 'catalog/category/$1';
 $route['(:any)'] = 'catalog/view/$1';
 
 

@@ -15,7 +15,7 @@
       </div>
       <div id="header">
 	<div id="logo">
-	  <a href="index.php"><img src="<?php echo base_url(); ?>images/logo.png" alt="" title="" border="0" width="237" height="140" /></a>
+	  <a href="index.html"><img src="<?php echo base_url(); ?>images/logo.png" alt="" title="" border="0" width="237" height="140" /></a>
 	</div>
 	<div class="oferte_content">
 	  <div class="top_divider">
@@ -50,29 +50,29 @@
 	<div class="left_menu_corner">
 	</div>
       <ul class="menu">
-	<li><a href="<?php echo base_url(); ?>" class="nav1">Home</a></li>
+	<li><a href="<?php echo base_url(); ?>index.html" class="nav1">Home</a></li>
 	<li class="divider"></li>
-	<li><a href="<?php echo base_url(); ?>page/privacy-policy/" class="nav2">Privacy Policy</a></li>
+	<li><a href="<?php echo base_url(); ?>page/privacy-policy.html" class="nav2">Privacy Policy</a></li>
 	<li class="divider"></li>
-	<li><a href="<?php echo base_url(); ?>page/how-to-order/" class="nav3">How to Order</a></li>
+	<li><a href="<?php echo base_url(); ?>page/how-to-order.html" class="nav3">How to Order</a></li>
 	<li class="divider"></li>
 	<?php
 	  if($loggedin) {
-	    echo '<li><a href="my-account.php" class="nav4">My account</a></li>';
+	    echo '<li><a href="' . base_url() . '/my-account.html" class="nav4">My account</a></li>';
 	    echo '<li class="divider"></li>';
-	    echo '<li><a href="logout.php" class="nav4">Logout</a></li>';
+	    echo '<li><a href="' . base_url() . 'page/logout.html" class="nav4">Logout</a></li>';
 	  } else {
-	    echo '<li><a href="sign-in.php" class="nav4">Sign In</a></li>';
+	    echo '<li><a href="' . base_url() . 'page/sign-in.html" class="nav4">Sign In</a></li>';
 	    echo '<li class="divider"></li>';
-	    echo '<li><a href="sign-up" class="nav4">Sign Up</a></li>';
+	    echo '<li><a href="' . base_url() . 'page/sign-up.html" class="nav4">Sign Up</a></li>';
 	  }
 	?>
 	<li class="divider"></li>
-	<li><a href="<?php echo base_url(); ?>page/shipping-returns/" class="nav5">Shipping/Returns</a></li>
+	<li><a href="<?php echo base_url(); ?>page/shipping-returns.html" class="nav5">Shipping/Returns</a></li>
 	<li class="divider"></li>
-	<li><a href="<?php echo base_url(); ?>page/contact-us/" class="nav6">Contact Us</a></li>
+	<li><a href="<?php echo base_url(); ?>page/contact-us.html" class="nav6">Contact Us</a></li>
 	<li class="divider"></li>
-	<li><a href="<?php echo base_url(); ?>page/about/" class="nav6">About</a></li>
+	<li><a href="<?php echo base_url(); ?>page/about.html" class="nav6">About</a></li>
       </ul>
       <div class="right_menu_corner">
       </div>
@@ -84,10 +84,10 @@
             $odd_even = false;
             foreach( $categories as $category ):
                 if($odd_even) {
-                    echo "<li class='even'><a href='" . base_url() . "category/{$category['slug']}/'>{$category['name']}</a></li>";
+                    echo "<li class='even'><a href='" . base_url() . "category/{$category['slug']}.html'>{$category['name']}</a></li>";
                     $odd_even = false;
                 } else {
-                    echo "<li class='odd'><a href='" . base_url() . "category/{$category['slug']}/'>{$category['name']}</a></li>";
+                    echo "<li class='odd'><a href='"  . base_url() . "category/{$category['slug']}.html'>{$category['name']}</a></li>";
                     $odd_even = true;
                 }
             endforeach;
