@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
     <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="<?php echo base_url(); ?>javascript/boxOver.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>javascript/jquery.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>javascript/livevalidation.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
   </head>
   <body>

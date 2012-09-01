@@ -10,10 +10,10 @@ class StaticPages extends CI_Controller {
 
   public function processContactForm() {
     $this->load->library('form_validation');
-    $this->form_validation->set_rules('name',    'Name',    'trim|required|min_length[5]|max_length[70]|xss_clean');
+    $this->form_validation->set_rules('name',    'Name',    'trim|required|xss_clean');
     $this->form_validation->set_rules('email',   'Email',   'required|valid_email');
     $this->form_validation->set_rules('title',   'Title',   'xss_clean');
-    $this->form_validation->set_rules('message', 'Message', 'trim|required|min_length[5]|max_length[70]|xss_clean');
+    $this->form_validation->set_rules('message', 'Message', 'required|xss_clean');
 
     if( $this->form_validation->run() === false ) {
         $this->showContactForm();

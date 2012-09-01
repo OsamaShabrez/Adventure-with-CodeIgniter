@@ -17,23 +17,31 @@
                     <div class="form_row">
                         <label style="text-align: center; width: inherit;"></label>
                         <label class="contact"><strong><span>*</span></strong>Name :</label>
-                        <input type="text" maxlength="25" value="<?php echo set_value('name'); ?>" name="name" class="contact_input">
+                        <input type="text" maxlength="25" id="name" name="name" value="<?php echo set_value('name'); ?>" class="contact_input">
                     </div>
                     <div class="form_row">
                         <label class="contact"><strong><span>*</span></strong>Email :</label>
-                        <input type="text" maxlength="25" name="email" value="<?php echo set_value('email'); ?>" class="contact_input">
+                        <input type="text" maxlength="25" id="email" name="email" value="<?php echo set_value('email'); ?>" class="contact_input">
                     </div>
                     <div class="form_row">
                         <label class="contact">Title :</label>
-                        <input type="text" maxlength="25" name="title" value="<?php echo set_value('title'); ?>" class="contact_input">
+                        <input type="text" maxlength="25" id="title" name="title" value="<?php echo set_value('title'); ?>" class="contact_input">
                     </div>
                     <div class="form_row">
                         <label class="contact"><strong><span>*</span></strong>Message :</label>
-                        <textarea name="message" class="contact_textarea"><?php echo set_value('title'); ?></textarea>
+                        <textarea name="message" id="message" class="contact_textarea"><?php echo set_value('title'); ?></textarea>
                     </div>
                     <div class="form_row">
                             <input type="submit" value="Send!" class="button"><br>
-                    </div>      
+                    </div>
+                    <script type="text/javascript"> 
+                        var name = new LiveValidation('name');
+                        name.add( Validate.Presence);
+                        var email = new LiveValidation('email');
+                        email.add( Validate.Email );
+                        var message = new LiveValidation('message');
+                        message.add( Validate.Presence);
+                    </script>
                 </form>
             </div> 
             <div style="clear:both;"></div>
