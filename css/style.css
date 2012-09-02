@@ -556,16 +556,17 @@ color:#5F9FAB;
 }
 /*---------------contact_form------------------*/
 .contact_form{
-width:355px;
 float:left;
-padding:0px 0 0 75px;
+padding:0px 0 0 5px;
 }
 .form_row{
-width:335px;
 clear:both;
 padding:10px 0 10px 0;
 _padding:5px 0 5px 0;
 color:#a53d17;
+-moz-transition: 0.5s all ease-in-out;
+-webkit-transition: 0.5s all ease-in-out;
+-o-transition: 0.5s all ease-in-out;
 }
 label.contact{
 width:75px;
@@ -585,9 +586,7 @@ float:left;
 text-align: left;
 vertical-align: middle;
 }
-label.contact span {
-    color: #FF0000;
-}
+label.contact span { color: #FF0000; }
 input.contact_input{
 width:243px;
 height:25px;
@@ -620,6 +619,15 @@ text-decoration:none;
 line-height:27px;
 color:#1c4a52;
 }
+/*--------------validation messages ---*/
+.LV_validation_message{
+    -moz-transition: 0.5s all ease-in-out;
+    -webkit-transition: 0.5s all ease-in-out;
+    -o-transition: 0.5s all ease-in-out;
+    margin-left: 5px;
+}
+.LV_valid {color: green;}
+.LV_invalid{color: red;}
 /*--------------footer----------------*/
 .footer{
 width:1000px;
@@ -673,11 +681,12 @@ text-decoration:underline;
 }
 .button {
     font-family: 'Arvo',monospace;
+    border-radius: 5px 5px 5px 5px;
+    -webkit-transition: 0.5s all ease-in-out;
+    -moz-transition: 0.5s all ease-in-out;
 }
 .button:hover {
-    padding: 6px 10px 6px 5px;
-    color: #fff;
-    font-weight: bold;
+    background-color: #fff;
 }
 legend {
     font-size: medium;

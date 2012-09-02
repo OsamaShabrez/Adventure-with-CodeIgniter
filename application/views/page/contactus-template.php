@@ -12,10 +12,9 @@
         </div>
         <div class="center_prod_box_big">
             <div class="contact_form">
-            <?php echo validation_errors('<li>','</li>'); ?>
+            <ul style="color:#F00;"><?php echo validation_errors('<li>','</li>'); ?></ul>
                 <?php echo form_open('page/processcontactform'); ?>
                     <div class="form_row">
-                        <label style="text-align: center; width: inherit;"></label>
                         <label class="contact"><strong><span>*</span></strong>Name :</label>
                         <input type="text" maxlength="25" id="name" name="name" value="<?php echo set_value('name'); ?>" class="contact_input">
                     </div>
@@ -35,11 +34,12 @@
                             <input type="submit" value="Send!" class="button"><br>
                     </div>
                     <script type="text/javascript"> 
-                        var name = new LiveValidation('name');
+                        var name = new LiveValidation('name', {onlyOnSubmit: true });
                         name.add( Validate.Presence);
-                        var email = new LiveValidation('email');
+                        name.add( Validate.Length, { maximum: 25 } );
+                        var email = new LiveValidation('email', {onlyOnSubmit: true });
                         email.add( Validate.Email );
-                        var message = new LiveValidation('message');
+                        var message = new LiveValidation('message', {onlyOnSubmit: true });
                         message.add( Validate.Presence);
                     </script>
                 </form>
