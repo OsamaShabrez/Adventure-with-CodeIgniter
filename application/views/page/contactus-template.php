@@ -13,7 +13,10 @@
         <div class="center_prod_box_big">
             <div class="contact_form">
             <ul style="color:#F00;"><?php echo validation_errors('<li>','</li>'); ?></ul>
-                <?php echo form_open('page/processcontactform'); ?>
+            <?php if ( $this->session->flashdata('message') ) : ?>
+                <p class="flashmessage_valid"><?php echo $this->session->flashdata('message'); ?></p>
+            <?php endif; ?>
+                <?php echo form_open('page/contact-us'); ?>
                     <div class="form_row">
                         <label class="contact"><strong><span>*</span></strong>Name :</label>
                         <input type="text" maxlength="25" id="name" name="name" value="<?php echo set_value('name'); ?>" class="contact_input">
@@ -39,6 +42,7 @@
                         name.add( Validate.Length, { maximum: 25 } );
                         var email = new LiveValidation('email', {onlyOnSubmit: true });
                         email.add( Validate.Email );
+                        email.add( Validate.Presence );
                         var message = new LiveValidation('message', {onlyOnSubmit: true });
                         message.add( Validate.Presence);
                     </script>

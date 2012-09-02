@@ -628,6 +628,22 @@ color:#1c4a52;
 }
 .LV_valid {color: green;}
 .LV_invalid{color: red;}
+.flashmessage_valid {
+    background-color: green;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    width: 510px;
+}
+.flashmessage_invalid {
+    background-color: red;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    width: 510px;
+}
 /*--------------footer----------------*/
 .footer{
 width:1000px;
