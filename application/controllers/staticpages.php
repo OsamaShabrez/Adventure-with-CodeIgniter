@@ -68,7 +68,7 @@ class StaticPages extends CI_Controller {
     $data['title'] = 'Sign In';
 
     $this->load->library('form_validation');
-    $this->load->library('form');
+    $this->load->helper('form');
     echo 'SignIn';
   }
 
