@@ -23,7 +23,7 @@ class Catalog extends CI_Controller {
       $data['title'] = '';
     }
 
-    $data['loggedin'] = $this->session->getLoggedIn();
+    $data['loggedin'] = $this->session->userdata('loggedIn');
 
     $data['catalog'] = $this->db_model->get_catalog();
 
@@ -44,33 +44,12 @@ class Catalog extends CI_Controller {
         show_404('category===content function in catalog.php called');
     }
     $data['title'] = ucwords(str_replace( "-", " ", $data['content']['name']) ); // Capitalize the first letter
-    $data['loggedin'] = false;
+    $data['loggedin'] = $this->session->userdata('loggedIn');
 
     $this->load->view('templates/header', $data);
     $this->load->view('category/showitems', $data);
     $this->load->view('templates/footer', $data);
   }
   
-  public function page( $page = false ) {
-
-    if( $page === false ) {
-        show_404('page===false function in catalog.php called');
-    }
-
-    $this->load->helper('url');
-    $data['categories'] = $this->db_model->get_category();
-
-    if ( ( $data['content'] = $this->db_model->get_page($page) ) == FALSE ) {
-        show_404('category===content function in catalog.php called');
-    }
-    
-    $data['title'] = ucwords(str_replace( "-", " ", $data['content']['title']) ); // Capitalize the first letter
-    $data['loggedin'] = false;
-    $data['description'] = $data['content']['description'];
-
-    $this->load->view('templates/header', $data);
-    $this->load->view('page/page-template', $data);
-    $this->load->view('templates/footer', $data);
-  }
 }
 ?>

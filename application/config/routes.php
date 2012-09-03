@@ -37,14 +37,19 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-
-$route['default_controller']        = "catalog/view";
+/* Default Routes */
+$route['default_controller']        = 'catalog/view';
+/* Admin Route */
+$route['admin']               = 'admin/index';
+$route['admin/index']               = 'admin/index';
+/* Static Pages Routes */
 $route['page/processcontactform']   = 'staticpages/processcontactform';
 $route['page/contact-us']           = 'staticpages/showcontactform';
 $route['page/sign-in']              = 'staticpages/signin';
 $route['page/sign-up']              = 'staticpages/signup';
-$route['page/logout']              = 'staticpages/signout';
+$route['page/logout']               = 'staticpages/signout';
 $route['page/(:any)']               = 'staticpages/page/$1';
+/* Catalog Pages Routes */
 $route['category/(:any)']           = 'catalog/category/$1';
 $route['(:any)']                    = 'catalog/view/$1';
 

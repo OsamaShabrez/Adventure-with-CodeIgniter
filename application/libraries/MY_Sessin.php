@@ -10,7 +10,7 @@
  *
  * @author lordosama
  */
-class MY_Session extends CI_Session {
+class MY_Sessin {
     //put your code here
 
     public function __construct() {

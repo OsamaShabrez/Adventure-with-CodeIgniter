@@ -48,7 +48,7 @@ class StaticPages extends CI_Controller {
     
     $this->load->helper('url');
     $data['categories'] = $this->db_model->get_category();
-    $data['loggedin'] = $this->session->getLoggedIn();
+    $data['loggedin'] = $this->session->userdata('loggedIn');
 
     $this->form_validation->set_rules('name',    'Name',    'trim|required|xss_clean');
     $this->form_validation->set_rules('email',   'Email',   'required|valid_email');
@@ -73,7 +73,7 @@ class StaticPages extends CI_Controller {
     $this->load->helper('url');
 
     $data['categories'] = $this->db_model->get_category();
-    $data['loggedin']   = $this->session->getLoggedIn();
+    $data['loggedin']   = $this->session->userdata('loggedIn');
 
     $this->form_validation->set_rules('username',    'Username',    'trim|required|xss_clean');
     $this->form_validation->set_rules('password',    'Password',    'trim|required|xss_clean');
@@ -94,7 +94,7 @@ class StaticPages extends CI_Controller {
     $this->load->helper('url');
 
     $data['categories'] = $this->db_model->get_category();
-    $data['loggedin']   = $this->session->getLoggedIn();
+    $data['loggedin']   = $this->session->userdata('loggedIn');
 
     $this->form_validation->set_rules('username',    'Username',    'trim|required|xss_clean');
     $this->form_validation->set_rules('password',    'Password',    'trim|required|xss_clean');
@@ -129,7 +129,8 @@ class StaticPages extends CI_Controller {
   public function signOut() {
     $this->load->helper('url');
 
-    $this->session->logOut();
+    $this->session->unset_userdata('staff');
+    $this->session->set_userdata('loggedIn', false);
     $this->session->set_flashdata('v_message', 'Logged out successfully');
 
     redirect('page/sign-in');
@@ -149,7 +150,7 @@ class StaticPages extends CI_Controller {
     }
 
     $data['title'] = ucwords(str_replace( "-", " ", $data['content']['title']) ); // Capitalize the first letter
-    $data['loggedin'] = false;
+    $data['loggedin'] = $this->session->userdata('loggedIn');
     $data['description'] = $data['content']['description'];
 
     $this->load->view('templates/header', $data);
