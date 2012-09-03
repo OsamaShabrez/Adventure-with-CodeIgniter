@@ -6,6 +6,11 @@ class Catalog extends CI_Controller {
     parent::__construct();
     $this->load->model('db_model');
     $this->load->library('session');
+    $this->load->helper('url');
+
+    if( $this->session->userdata('loggedIn') === true && $this->session->userdata('staff') === true ) {
+        redirect('admin/index');
+    }
   }
 
   public function view($page = 'index') {
@@ -15,7 +20,7 @@ class Catalog extends CI_Controller {
     }
 
     $this->load->helper('url');
-    $data['categories'] = $this->db_model->get_category();
+    $data['categories'] = $this->db_model->getCategory();
 
     if( $page != 'index' ) {
       $data['title'] = ucwords(str_replace( "-", " ", $page) ); // Capitalize the first letter
@@ -25,7 +30,7 @@ class Catalog extends CI_Controller {
 
     $data['loggedin'] = $this->session->userdata('loggedIn');
 
-    $data['catalog'] = $this->db_model->get_catalog();
+    $data['catalog'] = $this->db_model->getCatalog();
 
     $this->load->view('templates/header', $data);
     $this->load->view('catalog/'.$page, $data);
@@ -38,9 +43,9 @@ class Catalog extends CI_Controller {
     }
 
     $this->load->helper('url');
-    $data['categories'] = $this->db_model->get_category();
+    $data['categories'] = $this->db_model->getCategory();
 
-    if ( ( $data['content'] = $this->db_model->get_category($category) ) == FALSE ) {
+    if ( ( $data['content'] = $this->db_model->getCategory($category) ) == FALSE ) {
         show_404('category===content function in catalog.php called');
     }
     $data['title'] = ucwords(str_replace( "-", " ", $data['content']['name']) ); // Capitalize the first letter

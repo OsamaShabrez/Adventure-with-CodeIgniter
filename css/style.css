@@ -635,6 +635,7 @@ color:#1c4a52;
     padding: 5px;
     text-align: center;
     width: 510px;
+    margin: 0 auto;
 }
 .flashmessage_invalid {
     background-color: red;
@@ -643,6 +644,7 @@ color:#1c4a52;
     padding: 5px;
     text-align: center;
     width: 510px;
+    margin: 0 auto;
 }
 /*--------------footer----------------*/
 .footer{
@@ -751,4 +753,27 @@ br { clear: both; }
 }	    
 #hor-minimalist-b tbody tr:hover td{
     color: #ff0000;
+}
+/*--------------admin----------------*/
+.main {
+}
+.main li {
+    float: left;
+    font-family: monospace;
+    font-variant: small-caps;
+    padding: 0.2em;
+    font-size: 14px;
+    width: 200px;
+    font-weight: bold;
+    margin-left: 80px;
+    list-style-type: none;
+    list-style: none;
+}
+li a, a:visited, a:after {
+    text-decoration: none;
+    color: inherit;
+}
+li a:hover {
+    text-decoration: underline;
+    color: #111111;
 }

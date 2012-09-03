@@ -6,6 +6,11 @@ class StaticPages extends CI_Controller {
     parent::__construct();
     $this->load->model('db_model');
     $this->load->library('session');
+    $this->load->helper('url');
+
+    if( $this->session->userdata('loggedIn') === true && $this->session->userdata('staff') === true ) {
+        redirect('admin/index');
+    }
   }
 
   private function processContactForm() {
@@ -47,7 +52,7 @@ class StaticPages extends CI_Controller {
     $this->load->helper('form');
     
     $this->load->helper('url');
-    $data['categories'] = $this->db_model->get_category();
+    $data['categories'] = $this->db_model->getCategory();
     $data['loggedin'] = $this->session->userdata('loggedIn');
 
     $this->form_validation->set_rules('name',    'Name',    'trim|required|xss_clean');
@@ -72,7 +77,7 @@ class StaticPages extends CI_Controller {
 
     $this->load->helper('url');
 
-    $data['categories'] = $this->db_model->get_category();
+    $data['categories'] = $this->db_model->getCategory();
     $data['loggedin']   = $this->session->userdata('loggedIn');
 
     $this->form_validation->set_rules('username',    'Username',    'trim|required|xss_clean');
@@ -93,7 +98,7 @@ class StaticPages extends CI_Controller {
 
     $this->load->helper('url');
 
-    $data['categories'] = $this->db_model->get_category();
+    $data['categories'] = $this->db_model->getCategory();
     $data['loggedin']   = $this->session->userdata('loggedIn');
 
     $this->form_validation->set_rules('username',    'Username',    'trim|required|xss_clean');
@@ -111,11 +116,12 @@ class StaticPages extends CI_Controller {
             $this->session->set_flashdata('iv_message', 'Invalid username/password');
             redirect( 'page/sign-in' );
         } else {
+            $this->session->set_userdata('loggedIn', true);
             if( $status === 1) {
-                $this->session->setLoginStatus( true );
+                $this->session->set_userdata('staff', true);
                 redirect('admin/index');
             } else {
-                $this->session->setLoginStatus( false );
+                $this->session->set_userdata('staff', false);
                 redirect('');
             }
         }
@@ -143,9 +149,9 @@ class StaticPages extends CI_Controller {
     }
 
     $this->load->helper('url');
-    $data['categories'] = $this->db_model->get_category();
+    $data['categories'] = $this->db_model->getCategory();
 
-    if ( ( $data['content'] = $this->db_model->get_page($page) ) == FALSE ) {
+    if ( ( $data['content'] = $this->db_model->getPage($page) ) == FALSE ) {
         show_404('staticpages.php -> page($data[content])');
     }
 

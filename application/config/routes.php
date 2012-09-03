@@ -40,8 +40,10 @@
 /* Default Routes */
 $route['default_controller']        = 'catalog/view';
 /* Admin Route */
-$route['admin']               = 'admin/index';
+$route['admin']                     = 'admin/index';
 $route['admin/index']               = 'admin/index';
+$route['admin/logout']              = 'admin/lognout';
+$route['admin/check-status']        = 'admin/checkstatus';
 /* Static Pages Routes */
 $route['page/processcontactform']   = 'staticpages/processcontactform';
 $route['page/contact-us']           = 'staticpages/showcontactform';

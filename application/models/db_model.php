@@ -6,7 +6,7 @@ class Db_model extends CI_Model {
     $this->load->database();
   }
 
-  public function get_catalog( $pagination = FALSE ) {
+  public function getCatalog( $pagination = FALSE ) {
     if( $pagination === FALSE ) {
       $query = $this->db->get( 'items' );
       return $query->result_array();
@@ -16,12 +16,12 @@ class Db_model extends CI_Model {
     return $query->result_array();
   }
   
-  public function get_page( $slug = false ) {
+  public function getPage( $slug = false ) {
     $query = $this->db->get_where('static_pages', array('slug' => $slug));
     return $query->row_array();
   }
   
-  public function get_category( $slug = false ) {
+  public function getCategory( $slug = false ) {
     if( $slug === FALSE ) {
         $query = $this->db->get('type');
         return $query->result_array();
