@@ -60,7 +60,7 @@
 	<li class="divider"></li>
 	<?php
 	  if($loggedin) {
-	    echo '<li><a href="' . base_url() . '/my-account.html" class="nav4">My account</a></li>';
+	    echo '<li><a href="' . base_url() . '/my-account.html" class="nav4">Profile</a></li>';
 	    echo '<li class="divider"></li>';
 	    echo '<li><a href="' . base_url() . 'page/logout.html" class="nav4">Logout</a></li>';
 	  } else {

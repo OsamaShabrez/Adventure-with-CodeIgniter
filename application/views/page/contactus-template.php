@@ -12,7 +12,7 @@
         </div>
         <div class="center_prod_box_big">
             <div class="contact_form">
-            <ul style="color:#F00;"><?php echo validation_errors('<li>','</li>'); ?></ul>
+            <?php echo validation_errors('<p class="flashmessage_invalid">','</p'); ?>
             <?php if ( $this->session->flashdata('message') ) : ?>
                 <p class="flashmessage_valid"><?php echo $this->session->flashdata('message'); ?></p>
             <?php endif; ?>

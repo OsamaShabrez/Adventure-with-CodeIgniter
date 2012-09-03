@@ -15,12 +15,24 @@ class MY_Session extends CI_Session {
 
     public function __construct() {
         parent::__construct();
-        parent::set_userdata('1','2');
-        $this->set_userdata('loggedIn', false);
     }
     
     public function getLoggedIn() {
         return $this->userdata('loggedIn');
+    }
+    
+    public function setLoginStatus( $status ) {
+        $this->set_userdata('loggedIn', true);
+        if ( $status ) {
+            $this->set_userdata('staff', true);
+        } else {
+            $this->set_userdata('staff', false);
+        }
+    }
+    
+    public function logOut() {
+        $this->unset_userdata('staff');
+        $this->set_userdata('loggedIn', false);
     }
     
     public function setFlashMessage() {

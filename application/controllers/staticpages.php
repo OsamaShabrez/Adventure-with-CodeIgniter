@@ -8,7 +8,7 @@ class StaticPages extends CI_Controller {
     $this->load->library('session');
   }
 
-  public function processContactForm() {
+  private function processContactForm() {
     $this->load->library('form_validation');
     $this->load->helper('form');
 
@@ -69,7 +69,57 @@ class StaticPages extends CI_Controller {
 
     $this->load->library('form_validation');
     $this->load->helper('form');
-    echo 'SignIn';
+
+    $this->load->helper('url');
+
+    $data['categories'] = $this->db_model->get_category();
+    $data['loggedin']   = $this->session->getLoggedIn();
+
+    $this->form_validation->set_rules('username',    'Username',    'trim|required|xss_clean');
+    $this->form_validation->set_rules('password',    'Password',    'trim|required|xss_clean');
+
+    if( $this->form_validation->run() === false ) {
+        $this->load->view('templates/header', $data);
+        $this->load->view('page/signin-template', $data);
+        $this->load->view('templates/footer', $data);
+    } else {
+        $this->processSignIn();
+    }
+  }
+
+  private function processSignIn() {
+    $this->load->library('form_validation');
+    $this->load->helper('form');
+
+    $this->load->helper('url');
+
+    $data['categories'] = $this->db_model->get_category();
+    $data['loggedin']   = $this->session->getLoggedIn();
+
+    $this->form_validation->set_rules('username',    'Username',    'trim|required|xss_clean');
+    $this->form_validation->set_rules('password',    'Password',    'trim|required|xss_clean');
+
+    if( $this->form_validation->run() === false ) {
+        $this->session->set_flashdata('iv_message', 'Invalid Username/Password');
+        redirect( 'page/sing-in' );
+    } else {
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        
+        $password = md5( $password . sha1($password) );
+        if ( ( $status = $this->db_model->userSignIn($username, $password) ) === false ) {
+            $this->session->set_flashdata('iv_message', 'Invalid username/password');
+            redirect( 'page/sign-in' );
+        } else {
+            if( $status === 1) {
+                $this->session->setLoginStatus( true );
+                redirect('admin/index');
+            } else {
+                $this->session->setLoginStatus( false );
+                redirect('');
+            }
+        }
+    }
   }
 
   public function signUp() {
@@ -77,7 +127,12 @@ class StaticPages extends CI_Controller {
   }
 
   public function signOut() {
-    echo 'SignOut';
+    $this->load->helper('url');
+
+    $this->session->logOut();
+    $this->session->set_flashdata('v_message', 'Logged out successfully');
+
+    redirect('page/sign-in');
   }
 
   public function page( $page = false ) {

@@ -29,6 +29,17 @@ class Db_model extends CI_Model {
     $query = $this->db->get_where('type', array('slug' => $slug));
     return $query->row_array();
   }
+  
+  public function userSignIn( $username, $password ) {
+    $query = $this->db->get_where('users', array('username' => $username, 'password' => $password) );
+
+    if ( !$query->num_rows() ) {
+        return false;
+    }
+    $query = $query->row();
+    if ($query->staff == true) return 1;
+    return 0;
+  }
 }
 
 ?>
