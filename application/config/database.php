@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'lordosama';
-$db['default']['database'] = 'CodeIgniter';
+$db['default']['username'] = 'lrdosama_sandbox';
+$db['default']['password'] = 'AAO=0iH^&@ot';
+$db['default']['database'] = 'lrdosama_sandbox';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = 'ci_';
 $db['default']['pconnect'] = TRUE;
