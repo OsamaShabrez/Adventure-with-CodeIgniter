@@ -6,7 +6,7 @@
             </div><!-- end of main content -->
             <div class="footer">
                 <div class="left_footer">
-                    <img src="<?php echo base_url(); ?>images/footer_logo.png" alt="" title="" width="170" height="49"/>
+                    <img src="<?php echo base_url(); ?><?php echo IMAGEPATH; ?>/footer_logo.png" alt="" title="" width="170" height="49"/>
                 </div>
                 <div class="center_footer">
                     <a href="<?php echo base_url(); ?>">Home</a>

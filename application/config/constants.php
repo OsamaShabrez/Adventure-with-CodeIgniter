@@ -45,8 +45,9 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 | These modes are used when working with fopen()/popen()
 |
 */
-define('SITENAME', 'GreenTel');
-
+define('SITENAME',  'GreenTel');
+define('IMAGEPATH', 'images');
+define('JAVASRIPT', 'javascript');
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

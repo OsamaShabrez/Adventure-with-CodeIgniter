@@ -6,7 +6,7 @@
                             <span class="border_cart"></span>
                             Total: <span class="price"><?php echo $_SESSION['price']; ?> PKR</span>
                         </div>
-                        <div class="cart_icon"><a href="check-out.php" title="header=[View Cart] body=[&nbsp;] fade=[on]"><img src="<?php echo base_url(); ?>images/shoppingcart.png" alt="" title="" width="48" height="48" border="0" /></a></div>
+                        <div class="cart_icon"><a href="check-out.php" title="header=[View Cart] body=[&nbsp;] fade=[on]"><img src="<?php echo base_url(); ?><?php echo IMAGEPATH; ?>/shoppingcart.png" alt="" title="" width="48" height="48" border="0" /></a></div>
                     </div>
                     <div class="title_box">Manufacturers</div>
                     <ul class="left_menu">
@@ -33,13 +33,13 @@
 			?>
                     </ul>      
                     <div class="banner_adds">                            
-                        <a href="#"><img src="<?php echo base_url(); ?>images/bann1.jpg" alt="" title="" border="0" /></a>
+                        <a href="#"><img src="<?php echo base_url(); ?><?php echo IMAGEPATH; ?>/bann1.jpg" alt="" title="" border="0" /></a>
                     </div>
                 </div><!-- end of right content -->   
             </div><!-- end of main content -->
             <div class="footer">
                 <div class="left_footer">
-                    <img src="<?php echo base_url(); ?>images/footer_logo.png" alt="" title="" width="170" height="49"/>
+                    <img src="<?php echo base_url(); ?><?php echo IMAGEPATH; ?>/footer_logo.png" alt="" title="" width="170" height="49"/>
                 </div>
                 <div class="center_footer">
                     <a href="<?php echo base_url(); ?>">Home</a>

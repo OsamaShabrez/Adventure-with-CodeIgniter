@@ -17,7 +17,7 @@
       </div>
       <div id="header">
 	<div id="logo">
-	  <a href="index.html"><img src="<?php echo base_url(); ?>images/logo.png" alt="" title="" border="0" width="237" height="140" /></a>
+	  <a href="index.html"><img src="<?php echo base_url(); ?><?php echo IMAGEPATH; ?>/logo.png" alt="" title="" border="0" width="237" height="140" /></a>
 	</div>
       </div>
     <div id="main_content">
