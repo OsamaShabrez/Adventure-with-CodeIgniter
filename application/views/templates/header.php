@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>
-      <?php if( $title != "") echo $title.' &raquo; '; ?>GreenTel</title>
+      <?php if( $title != "") echo $title.' &raquo; '; ?><?php echo SITENAME; ?></title>
     <link rel="shortcut icon" href="<?php echo base_url(); ?>fav-icon.ico" type="image/ico">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
     <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
@@ -19,33 +19,6 @@
 	<div id="logo">
 	  <a href="index.html"><img src="<?php echo base_url(); ?>images/logo.png" alt="" title="" border="0" width="237" height="140" /></a>
 	</div>
-	<div class="oferte_content">
-	  <div class="top_divider">
-	    <img src="<?php echo base_url(); ?>images/header_divider.png" alt="" title="" width="1" height="164" />
-	  </div>
-	<div class="oferta">
-	  <div class="oferta_content">
-	    <img src="<?php echo base_url(); ?>images/laptop.png" width="94" height="92" border="0" class="oferta_img" />
-	    <div class="oferta_details">
-	      <div class="oferta_title">Samsung GX 2004 LM</div>
-		<div class="oferta_text">
-		  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-		</div>
-	      <a href="details.php" class="details">details</a>
-	    </div>
-	  </div>
-	  <div class="oferta_pagination">
-	    <span class="current">1</span>
-	    <a href="#?page=2">2</a>
-	    <a href="#?page=3">3</a>
-	    <a href="#?page=3">4</a>
-	    <a href="#?page=3">5</a>  
-	  </div>        
-	</div>
-	<div class="top_divider">
-	  <img src="<?php echo base_url(); ?>images/header_divider.png" alt="" title="" width="1" height="164" />
-	</div>
-      </div> <!-- end of oferte_content-->
     </div>
     <div id="main_content">
       <div id="menu_tab">

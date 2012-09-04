@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>
-      <?php if( $title != "") echo $title.' &raquo; '; ?>GreenTel</title>
+      <?php if( $title != "") echo $title.' &raquo; '; ?><?php echo SITENAME; ?></title>
     <link rel="shortcut icon" href="<?php echo base_url(); ?>fav-icon.ico" type="image/ico">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
     <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
@@ -29,9 +29,9 @@
 	<li class="divider"></li>
 	<li><a href="<?php echo base_url(); ?>admin/check-status.html" class="nav3">Check Status</a></li>
 	<li class="divider"></li>
-	<li><a href="<?php echo base_url(); ?>admin/manage-stock.html" class="nav2">Manage Stock</a></li>
-	<li class="divider"></li>
 	<li><a href="<?php echo base_url(); ?>admin/manage-products.html" class="nav2">Manage Products</a></li>
+	<li class="divider"></li>
+	<li><a href="<?php echo base_url(); ?>admin/manage-stock.html" class="nav2">Manage Stock</a></li>
 	<li class="divider"></li>
 	<li><a href="<?php echo base_url(); ?>admin/manage-orders.html" class="nav5">Manage Orders</a></li>
 	<li class="divider"></li>

@@ -5,10 +5,9 @@
  * and open the template in the editor.
  */
 ?>
-<div style="clear:both;">
-    <div class="prod_box_big" style="text-align: center;">
-        <h3 class="flashmessage_valid">
-            ^^ Please select your desired option from the top menu bar ^^
-        </h3>
-    </div>
+<div class="main" style="clear:both;">
+    <li><a href="add-product">Add Product</a></li>
+    <li><a href="add-category">Add Category</a></li>
+    <li><a href="update-stock">Update Stock</a></li>
+    <li><a href="discountinued-products">Discontinued Products</a></li>
 </div>

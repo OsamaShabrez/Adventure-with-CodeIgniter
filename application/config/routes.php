@@ -42,8 +42,12 @@ $route['default_controller']        = 'catalog/view';
 /* Admin Route */
 $route['admin']                     = 'admin/index';
 $route['admin/index']               = 'admin/index';
-$route['admin/logout']              = 'admin/lognout';
 $route['admin/check-status']        = 'admin/checkstatus';
+$route['admin/manage-products']     = 'admin/manageProducts';
+$route['admin/manage-stock']        = 'admin/manageStock';
+$route['admin/manage-orders']       = 'admin/manageOrders';
+$route['admin/profile']             = 'admin/profile';
+$route['admin/logout']              = 'admin/lognout';
 /* Static Pages Routes */
 $route['page/processcontactform']   = 'staticpages/processcontactform';
 $route['page/contact-us']           = 'staticpages/showcontactform';
