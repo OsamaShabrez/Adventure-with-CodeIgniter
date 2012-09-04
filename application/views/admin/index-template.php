@@ -5,9 +5,11 @@
  * and open the template in the editor.
  */
 ?>
-<div class="main" style="clear:both;">
-    <li><a href="add-product">Add Product</a></li>
-    <li><a href="add-category">Add Category</a></li>
-    <li><a href="update-stock">Update Stock</a></li>
-    <li><a href="discountinued-products">Discontinued Products</a></li>
+<div class="main" style="clear:both;margin-bottom: 220px;">
+    <li><a href="<?php echo base_url(); ?>admin/check-status.html">Check Status</a></li>
+    <li><a href="<?php echo base_url(); ?>admin/manage-products.html">Manage Products</a></li>
+    <li><a href="<?php echo base_url(); ?>admin/manage-stock.html">Manage Stock</a></li>
+    <li><a href="<?php echo base_url(); ?>admin/manage-orders.html">Manage Orders</a></li>
+    <li><a href="<?php echo base_url(); ?>admin/profile.html">Profile</a></li>
+    <li><a href="<?php echo base_url(); ?>admin/logout.html" style="color:red;">Logout</a></li>
 </div>

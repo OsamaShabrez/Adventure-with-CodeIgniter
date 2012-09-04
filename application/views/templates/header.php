@@ -68,8 +68,5 @@
             endforeach;
         ?>
 	</ul>
-	<div class="banner_adds">
-	  <a href="#"><img src="<?php echo base_url(); ?><?php echo IMAGEPATH; ?>/bann2.jpg" alt="" title="" border="0" /></a>
-	</div>
       </div><!-- end of left content -->
       <?php if( isset($msg) && $msg != "") echo $msg; ?>

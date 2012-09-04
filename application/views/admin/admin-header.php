@@ -48,3 +48,4 @@
     </div><!-- end of left content -->
     <div class="center_content">
         <div class="center_title_bar"><?php echo $title; ?></div>
+        <div style="clear:both;"></div>
