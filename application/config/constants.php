@@ -47,6 +47,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',	'x+b');
 |
 */
 define('SITENAME',              'GreenTel');
+define('EMAILRECEIVER',         'contact@osamashabrez.com');
 define('IMAGEPATH',             'images');
 define('JAVASRIPT',             'javascript');
 define('ADMINHOMEPAGE',         'Admin Panel');

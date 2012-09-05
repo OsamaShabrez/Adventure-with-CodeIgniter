@@ -31,7 +31,7 @@ class StaticPages extends CI_Controller {
         $this->load->library('email');
 
         $this->email->from($this->input->post('email'), $this->input->post('name'));
-        $this->email->to('contact@osamashabrez.com');
+        $this->email->to(EMAILRECEIVER);
 
         if ( ( $subject = $this->input->post('title') ) === "" )
             $subject = 'New feedback from ' . $this->input->post('name');
