@@ -9,7 +9,10 @@
 <div class="center_title_bar">
     <?php echo $title; ?>
     <div style="float:right;padding: 4px;">
-        <input type="button" class="toggle" id="btn-new-product" style="border-radius: 15px;color: #A7A4A4;" value="<?php echo ADDNEWSITE; ?>" />
+        <input type="button" class="toggle" id="btn-new-product" style="border-radius: 15px;color: #A7A4A4;" value="<?php echo ADDNEWPRODUCT; ?>" />
+    </div>
+    <div style="float:right;padding: 4px;">
+        <input type="button" class="toggle" id="btn-new-category" style="border-radius: 15px;color: #A7A4A4;" value="<?php echo ADDNEWCATEGORY; ?>" />
     </div>
 </div>
 <div style="clear:both;"></div>
@@ -20,6 +23,24 @@
 <?php if ( $this->session->flashdata('iv_message') ) : ?>
     <p class="flashmessage_invalid" style="margin:10 auto 0;"><?php echo $this->session->flashdata('iv_message'); ?></p>
 <?php endif; ?>
+
+    <div class="prod_box_big" id="new-category" <?php if( !$this->session->flashdata('add_category')): ?>style="display:none;" <?php endif; ?>>
+        <div class="top_prod_box_big"></div>
+        <div class="center_prod_box_big" style="text-align: right;">
+            <?php echo form_open('admin/process-new-category'); ?>
+            Add New Category: <input type="text" id="new-category-name" name="category" style="width:380px;margin:0 25px;float:right;background-color: white;color: #999;border: 1px #DFDFDF solid;vertical-align: middle;" />
+            <div style="clear:both;"></div>
+            <input type="submit" style="color: #A7A4A4;width: 100px;margin: 0 25px;border-radius:25px;" value="Save" />
+            </form>
+        <?php foreach ($categories as $category) : ?>
+            <div style="text-align: left;float:left;background: #eeeeee;width: 220px;margin:5px 5px 5px 20px;padding: 5px; border-radius: 5px;float:left;">
+                <strong style="line-height: 2;"><?php echo $category['name']; ?></strong>
+                <a style="color:red;display: block;text-decoration: none;font-weight: bold;float:right;" href="remove-category/<?php echo $category['id'] ?>.html"><?php echo DELETECATEGORY;?></a>
+            </div>
+        <?php endforeach; ?>
+        </div>
+        <div class="bottom_prod_box_big"></div>                                
+    </div>
 
     <div class="prod_box_big" id="new-product" <?php if( !$this->session->flashdata('add_product')): ?>style="display:none;" <?php endif; ?>>
     <div class="top_prod_box_big"></div>

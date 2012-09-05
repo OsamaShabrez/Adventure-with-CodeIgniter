@@ -38,12 +38,7 @@ class Admin extends CI_Controller {
 
   public function manageProducts() {
     $this->load->helper('url');
-    $this->load->library('form_validation');
     $this->load->helper('form');
-
-    $this->form_validation->set_rules('name',        'Name',        'required|xss_clean');
-    $this->form_validation->set_rules('price',       'Price',       'required|xss_clean');
-    $this->form_validation->set_rules('description', 'Description', 'required|xss_clean');
 
     $data['title']      = MANAGEPRODUCTS;
     $data['products']   = $this->db_model->getItem();
@@ -56,7 +51,6 @@ class Admin extends CI_Controller {
 
   public function addNewProduct() {
     $this->load->helper('url');
-    $this->load->helper('form');
     $this->load->library('form_validation');
 
     $this->form_validation->set_rules('name',        'Name',        'required|xss_clean');
@@ -98,6 +92,48 @@ class Admin extends CI_Controller {
     }
   }
 
+  public function addNewCategory() {
+    $this->load->helper('url');
+    $this->load->library('form_validation');
+
+    $this->form_validation->set_rules('category', 'Category', 'required|xss_clean');
+    if( $this->form_validation->run() === false ) {
+        $this->session->set_flashdata( 'iv_message', 'Input validation failed, try again');
+        $this->session->set_flashdata( 'add_category', true );
+        redirect('/admin/manage-products');
+    } else {
+        $category = $this->input->post('category');
+        $slug = preg_replace("/[^A-Za-z0-9]/", "-", $category );
+        if ( $this->db_model->addCategory( $category, $slug ) ) {
+            $this->session->set_flashdata( 'v_message', 'Category added successfully' );
+        } else {
+            $this->session->set_flashdata( 'iv_message', 'Something went wrong, try again' );
+            $this->session->set_flashdata( 'add_category', true );
+        }
+        redirect('/admin/manage-products');
+    }      
+  }
+
+  public function removeProduct( $id ) {
+      if( $this->db_model->removeProduct($id) ) {
+        $this->session->set_flashdata( 'v_message', 'Product removed successfully' );
+        redirect('/admin/manage-products');
+      } else {
+        $this->session->set_flashdata( 'iv_message', 'Something went wrong, try again' );
+        redirect('/admin/manage-products');
+      }
+  }
+
+  public function removeCategory( $id ) {
+      if( $this->db_model->removeCategory($id) ) {
+        $this->session->set_flashdata( 'v_message', 'Category removed successfully' );
+        redirect('/admin/manage-products');
+      } else {
+        $this->session->set_flashdata( 'iv_message', 'Something went wrong, try again' );
+        redirect('/admin/manage-products');
+      }
+  }
+
   public function processProductUpdate() {
     $this->load->helper('url');
     $this->load->library('form_validation');
@@ -123,16 +159,6 @@ class Admin extends CI_Controller {
             redirect('/admin/manage-products');
         }
     }
-  }
-
-  public function removeProduct( $id ) {
-      if( $this->db_model->deleteProduct($id) ) {
-        $this->session->set_flashdata( 'v_message', 'Product removed successfully' );
-        redirect('/admin/manage-products');
-      } else {
-        $this->session->set_flashdata( 'iv_message', 'Something went wrong, try again' );
-        redirect('/admin/manage-products');
-      }
   }
 
   public function manageStock() {

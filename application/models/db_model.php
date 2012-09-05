@@ -52,6 +52,13 @@ class Db_model extends CI_Model {
     return false;
   }
 
+  public function addCategory( $category, $slug ) {
+    $data = array('name' => $category,
+                  'slug' => $slug);
+    if( $this->db->insert('category', $data) ) return true;
+    return false;
+  }
+
   public function processItemUpdate( $id, $name, $price, $description ) {
     $data = array('name'        => $name,
                   'price'       => $price,
@@ -61,9 +68,15 @@ class Db_model extends CI_Model {
     return false;
   }
   
-  public function deleteProduct( $id ) {
+  public function removeProduct( $id ) {
     $this->db->where('id', $id);
     if( $this->db->delete('products') ) return true;
+    return false;
+  }
+
+  public function removeCategory( $id ) {
+    $this->db->where('id', $id);
+    if( $this->db->delete('category') ) return true;
     return false;
   }
 }
