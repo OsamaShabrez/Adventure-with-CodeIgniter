@@ -40,6 +40,7 @@ class Db_model extends CI_Model {
   }
 
   public function getCategory( $slug = false ) {
+    $this->db->order_by("name", "ASC"); 
     if( $slug === FALSE ) {
         $query = $this->db->get('category');
         return $query->result_array();
@@ -65,7 +66,7 @@ class Db_model extends CI_Model {
                   'image'       => $image,
                   'description' => $description,
                   'slug'        => $slug,
-                  'type_id'     => $caetgory);
+                  'catId'       => $caetgory);
     if( $this->db->insert('products', $data) ) return true;
     return false;
   }
