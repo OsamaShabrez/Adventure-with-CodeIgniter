@@ -30,7 +30,7 @@ class Catalog extends CI_Controller {
 
     $data['loggedin'] = $this->session->userdata('loggedIn');
 
-    $data['catalog'] = $this->db_model->getItem();
+    $data['products'] = $this->db_model->getItem();
 
     $this->load->view('templates/header', $data);
     $this->load->view('catalog/'.$page, $data);
