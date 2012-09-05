@@ -40,26 +40,27 @@
 /* Default Routes */
 $route['default_controller']        = 'catalog/view';
 /* Admin Route */
-$route['admin']                     = 'admin/index';
-$route['admin/index']               = 'admin/index';
-$route['admin/check-status']        = 'admin/checkstatus';
-$route['admin/manage-products']     = 'admin/manageProducts';
-$route['admin/process-update']      = 'admin/processProductUpdate';
-$route['admin/process-new-product'] = 'admin/addNewProduct';
-$route['admin/manage-stock']        = 'admin/manageStock';
-$route['admin/manage-orders']       = 'admin/manageOrders';
-$route['admin/profile']             = 'admin/profile';
-$route['admin/logout']              = 'admin/lognout';
+$route['admin']                         = 'admin/index';
+$route['admin/index']                   = 'admin/index';
+$route['admin/check-status']            = 'admin/checkstatus';
+$route['admin/manage-products']         = 'admin/manageProducts';
+$route['admin/process-update']          = 'admin/processProductUpdate';
+$route['admin/process-new-product']     = 'admin/addNewProduct';
+$route['admin/remove-product/(:num)']   = 'admin/removeProduct/$1';
+$route['admin/manage-stock']            = 'admin/manageStock';
+$route['admin/manage-orders']           = 'admin/manageOrders';
+$route['admin/profile']                 = 'admin/profile';
+$route['admin/logout']                  = 'admin/lognout';
 /* Static Pages Routes */
-$route['page/processcontactform']   = 'staticpages/processcontactform';
-$route['page/contact-us']           = 'staticpages/showcontactform';
-$route['page/sign-in']              = 'staticpages/signin';
-$route['page/sign-up']              = 'staticpages/signup';
-$route['page/logout']               = 'staticpages/signout';
-$route['page/(:any)']               = 'staticpages/page/$1';
+$route['page/processcontactform']       = 'staticpages/processcontactform';
+$route['page/contact-us']               = 'staticpages/showcontactform';
+$route['page/sign-in']                  = 'staticpages/signin';
+$route['page/sign-up']                  = 'staticpages/signup';
+$route['page/logout']                   = 'staticpages/signout';
+$route['page/(:any)']                   = 'staticpages/page/$1';
 /* Catalog Pages Routes */
-$route['category/(:any)']           = 'catalog/category/$1';
-$route['(:any)']                    = 'catalog/view/$1';
+$route['category/(:any)']               = 'catalog/category/$1';
+$route['(:any)']                        = 'catalog/view/$1';
 
 
 /* End of file routes.php */

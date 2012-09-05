@@ -60,6 +60,12 @@ class Db_model extends CI_Model {
     if( $query = $this->db->update('products', $data) ) return true;
     return false;
   }
+  
+  public function deleteProduct( $id ) {
+    $this->db->where('id', $id);
+    if( $this->db->delete('products') ) return true;
+    return false;
+  }
 }
 
 ?>

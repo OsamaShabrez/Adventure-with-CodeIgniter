@@ -125,6 +125,16 @@ class Admin extends CI_Controller {
     }
   }
 
+  public function removeProduct( $id ) {
+      if( $this->db_model->deleteProduct($id) ) {
+        $this->session->set_flashdata( 'v_message', 'Product removed successfully' );
+        redirect('/admin/manage-products');
+      } else {
+        $this->session->set_flashdata( 'iv_message', 'Something went wrong, try again' );
+        redirect('/admin/manage-products');
+      }
+  }
+
   public function manageStock() {
     $this->load->helper('url');
 

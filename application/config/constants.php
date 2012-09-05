@@ -50,10 +50,10 @@ define('SITENAME',       'GreenTel');
 define('IMAGEPATH',      'images');
 define('JAVASRIPT',      'javascript');
 define('MANAGEPRODUCTS', 'Manage Products');
-define('ADDNEWSITE',     '+Add New Product');
+define('ADDNEWSITE',     '+ Add New Product');
 define('PRODUCTIMAGE',   '/products/');
-define('EDITPRODUCT',    '+Edit');
-define('DELETEPRODUCT',    '-Discountinue');
+define('EDITPRODUCT',    '+ Edit');
+define('DELETEPRODUCT',  '- Remove Product');
 define('CKEDITOR',       '/ckeditor/ckeditor.js');
 define('UPLOADPATH',     './images/products');
 /* End of file constants.php */

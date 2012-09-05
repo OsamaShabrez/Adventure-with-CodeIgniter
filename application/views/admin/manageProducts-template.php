@@ -51,6 +51,7 @@
     <div style="background: #eeeeee;width: 250px;margin:5px 5px 5px 20px;padding: 5px; border-radius: 5px;float:left;">
         <strong style="line-height: 2;"><?php echo $product['name']; ?></strong>
         <input type="button" class="toggle" id="btn-<?php echo $product['slug'].'-'.$product['id']; ?>"style="float:right;color: #A7A4A4;border-radius: 15px;" value="<?php echo EDITPRODUCT; ?>" />
+        <a style="color:red;display: block;text-decoration: none;font-weight: bold;text-align: center;" href="remove-product/<?php echo $product['id'] ?>.html"><?php echo DELETEPRODUCT;?></a>
         <div id="<?php echo $product['slug'].'-'.$product['id']; ?>" style="display: none;">
             <?php echo form_open('admin/process-update'); ?>
                 <div style="clear:both;"></div>
