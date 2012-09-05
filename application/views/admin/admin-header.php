@@ -5,7 +5,7 @@
       <?php if( $title != "") echo $title.' &raquo; '; ?><?php echo SITENAME; ?></title>
     <link rel="shortcut icon" href="<?php echo base_url(); ?>fav-icon.ico" type="image/ico">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
-    <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+    <!--<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>-->
     <script type="text/javascript" src="<?php echo base_url(); ?><?php echo JAVASRIPT; ?>/boxOver.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?><?php echo JAVASRIPT; ?>/jquery.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?><?php echo JAVASRIPT; ?>/livevalidation.js"></script>
@@ -46,6 +46,3 @@
 	<div class="banner_adds">
 	</div>
     </div><!-- end of left content -->
-    <div class="center_content">
-        <div class="center_title_bar"><?php echo $title; ?></div>
-        <div style="clear:both;"></div>

@@ -5,6 +5,9 @@
  * and open the template in the editor.
  */
 ?>
+<div class="center_content">
+<div class="center_title_bar"><?php echo $title; ?></div>
+<div style="clear:both;"></div>
 <div class="main" style="clear:both;margin-bottom: 220px;">
     <li><a href="<?php echo base_url(); ?>admin/check-status.html">Check Status</a></li>
     <li><a href="<?php echo base_url(); ?>admin/manage-products.html">Manage Products</a></li>

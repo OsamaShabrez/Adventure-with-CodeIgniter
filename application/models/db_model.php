@@ -6,12 +6,12 @@ class Db_model extends CI_Model {
     $this->load->database();
   }
 
-  public function getCatalog( $pagination = FALSE ) {
+  public function getItem( $pagination = FALSE ) {
     if( $pagination === FALSE ) {
-      $query = $this->db->get( 'items' );
+      $query = $this->db->get( 'products' );
       return $query->result_array();
     }
-    $query = $this->db->get_where( 'items', $pagination * 2, ($pagination + 1) * 2 );
+    $query = $this->db->get_where( 'products', $pagination * 2, ($pagination + 1) * 2 );
     $this->db->order_by("id", "desc");
     return $query->result_array();
   }
@@ -23,10 +23,10 @@ class Db_model extends CI_Model {
   
   public function getCategory( $slug = false ) {
     if( $slug === FALSE ) {
-        $query = $this->db->get('type');
+        $query = $this->db->get('category');
         return $query->result_array();
     }
-    $query = $this->db->get_where('type', array('slug' => $slug));
+    $query = $this->db->get_where('category', array('slug' => $slug));
     return $query->row_array();
   }
   
@@ -39,6 +39,26 @@ class Db_model extends CI_Model {
     $query = $query->row();
     if ($query->staff == true) return 1;
     return 0;
+  }
+
+  public function addProduct( $name, $price, $image, $description, $slug, $caetgory) {
+    $data = array('name'        => $name,
+                  'price'       => $price,
+                  'image'       => $image,
+                  'description' => $description,
+                  'slug'        => $slug,
+                  'type_id'     => $caetgory);
+    if( $this->db->insert('products', $data) ) return true;
+    return false;
+  }
+
+  public function processItemUpdate( $id, $name, $price, $description ) {
+    $data = array('name'        => $name,
+                  'price'       => $price,
+                  'description' => $description);
+    $this->db->where('id', $id);
+    if( $query = $this->db->update('products', $data) ) return true;
+    return false;
   }
 }
 
