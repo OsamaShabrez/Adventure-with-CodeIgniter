@@ -16,7 +16,6 @@
     </div>
 </div>
 <div style="clear:both;"></div>
-<?php echo validation_errors('<p class="flashmessage_invalid">','</p'); ?>
 <?php if ( $this->session->flashdata('v_message') ) : ?>
     <p class="flashmessage_valid" style="margin:10 auto 0;"><?php echo $this->session->flashdata('v_message'); ?></p>
 <?php endif; ?>
@@ -38,6 +37,7 @@
                 <a style="color:red;display: block;text-decoration: none;font-weight: bold;float:right;" href="remove-category/<?php echo $category['id'] ?>.html"><?php echo DELETECATEGORY;?></a>
             </div>
         <?php endforeach; ?>
+        <p style="text-align: left;color:red;"><?php echo DELETECATEGORYWARNING; ?></p>
         </div>
         <div class="bottom_prod_box_big"></div>                                
     </div>

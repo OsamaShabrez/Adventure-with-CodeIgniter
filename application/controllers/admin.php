@@ -15,25 +15,45 @@ class Admin extends CI_Controller {
   public function index() {
     $this->load->helper('url');
 
-    $data['title'] = 'Admin Panel';
+    $data['title'] = ADMINHOMEPAGE;
 
     $this->load->view('admin/admin-header', $data);
     $this->load->view('admin/index-template', $data);
     $this->load->view('admin/admin-footer', $data);
   }
   
-  public function checkStatus() {
+  public function managePages() {
     $this->load->helper('url');
+    $this->load->helper('form');
 
-    $data['title'] = 'Status Check';
-    
-    $data['status'] = array(
-        'Orders Status'
-    );
+    $data['title'] = MANAGEPAGES;
+    $data['pages'] = $this->db_model->getPage();
 
     $this->load->view('admin/admin-header', $data);
-    $this->load->view('admin/status-template', $data);
+    $this->load->view('admin/managePages-template', $data);
     $this->load->view('admin/admin-footer', $data);
+  }
+
+  public function updatePage() {
+    $this->load->helper('url');
+    $this->load->library('form_validation');
+
+    $this->form_validation->set_rules('description', 'Description', 'required|xss_clean');
+    $this->form_validation->set_rules('id', 'id', 'required|numeric|xss_clean');
+
+    if( $this->form_validation->run() === false ) {
+        $this->session->set_flashdata( 'iv_message', 'Input validation failed, try again' );
+        redirect('/admin/manage-pages');
+    } else {
+        $id          = $this->input->post('id');
+        $description = $this->input->post('description');
+        if( $this->db_model->updatePage( $id, $description ) ) {
+            $this->session->set_flashdata( 'v_message', 'Update Successfull' );
+        } else {
+            $this->session->set_flashdata( 'iv_message', 'Something went wrong, please try again' );
+        }
+        redirect('/admin/manage-pages');
+    }
   }
 
   public function manageProducts() {
@@ -152,7 +172,7 @@ class Admin extends CI_Controller {
         $price       = $this->input->post('price');
         $description = $this->input->post('description');
         if( $this->db_model->processItemUpdate( $id, $name, $price, $description ) ) {
-            $this->session->set_flashdata( 'message', 'Update Successfull' );
+            $this->session->set_flashdata( 'v_message', 'Update Successfull' );
             redirect('/admin/manage-products');
         } else {
             $this->session->set_flashdata( 'iv_message', 'Something went wrong, please try again' );

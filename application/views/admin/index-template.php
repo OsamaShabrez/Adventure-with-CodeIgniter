@@ -9,7 +9,7 @@
 <div class="center_title_bar"><?php echo $title; ?></div>
 <div style="clear:both;"></div>
 <div class="main" style="clear:both;margin-bottom: 220px;">
-    <li><a href="<?php echo base_url(); ?>admin/check-status.html">Check Status</a></li>
+    <li><a href="<?php echo base_url(); ?>admin/manage-pages.html">Manage Pages</a></li>
     <li><a href="<?php echo base_url(); ?>admin/manage-products.html">Manage Products</a></li>
     <li><a href="<?php echo base_url(); ?>admin/manage-stock.html">Manage Stock</a></li>
     <li><a href="<?php echo base_url(); ?>admin/manage-orders.html">Manage Orders</a></li>

@@ -27,7 +27,7 @@
       <ul class="menu">
 	<li><a href="<?php echo base_url(); ?>admin/index.html" class="nav1">Admin Panel</a></li>
 	<li class="divider"></li>
-	<li><a href="<?php echo base_url(); ?>admin/check-status.html" class="nav3">Check Status</a></li>
+	<li><a href="<?php echo base_url(); ?>admin/manage-pages.html" class="nav2">Manage Pages</a></li>
 	<li class="divider"></li>
 	<li><a href="<?php echo base_url(); ?>admin/manage-products.html" class="nav2">Manage Products</a></li>
 	<li class="divider"></li>

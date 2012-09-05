@@ -17,10 +17,21 @@ class Db_model extends CI_Model {
   }
   
   public function getPage( $slug = false ) {
+    if( $slug === FALSE ) {
+        $query = $this->db->get('static_pages');
+        return $query->result_array();
+    }
     $query = $this->db->get_where('static_pages', array('slug' => $slug));
     return $query->row_array();
   }
-  
+
+  public function updatePage( $id, $description) {
+    $data = array('description' => $description);
+    $this->db->where('id', $id);
+    if( $this->db->update('static_pages', $data) ) return true;
+    return false;
+  }
+
   public function getCategory( $slug = false ) {
     if( $slug === FALSE ) {
         $query = $this->db->get('category');
@@ -64,7 +75,7 @@ class Db_model extends CI_Model {
                   'price'       => $price,
                   'description' => $description);
     $this->db->where('id', $id);
-    if( $query = $this->db->update('products', $data) ) return true;
+    if( $this->db->update('products', $data) ) return true;
     return false;
   }
   

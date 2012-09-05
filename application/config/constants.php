@@ -46,17 +46,21 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',	'x+b');
 | when and where ever possible
 |
 */
-define('SITENAME',       'GreenTel');
-define('IMAGEPATH',      'images');
-define('JAVASRIPT',      'javascript');
-define('MANAGEPRODUCTS', 'Manage Products');
-define('ADDNEWPRODUCT',  '+ Add New Product');
-define('ADDNEWCATEGORY', '+ Manage Categories');
-define('DELETECATEGORY', 'x');
-define('PRODUCTIMAGE',   '/products/');
-define('EDITPRODUCT',    '+ Edit');
-define('DELETEPRODUCT',  '- Remove Product');
-define('CKEDITOR',       '/ckeditor/ckeditor.js');
-define('UPLOADPATH',     './images/products');
+define('SITENAME',              'GreenTel');
+define('IMAGEPATH',             'images');
+define('JAVASRIPT',             'javascript');
+define('ADMINHOMEPAGE',         'Admin Panel');
+define('MANAGEPRODUCTS',        'Manage Products');
+define('ADDNEWPRODUCT',         '+ Add New Product');
+define('ADDNEWCATEGORY',        '+ Manage Categories');
+define('DELETECATEGORY',        'x');
+define('DELETECATEGORYWARNING', '<strong>Warning:</strong> Removing category will make all its products removed from your inventory. Double check before you proceed.');
+define('PRODUCTIMAGE',          '/products/');
+define('EDITPRODUCT',           '+ Edit');
+define('DELETEPRODUCT',         '- Remove Product');
+define('CKEDITOR',              '/ckeditor/ckeditor.js');
+define('UPLOADPATH',            './images/products');
+define('MANAGEPAGES',           'Manage Static Pages');
+define('ADDNEWPAGE',            'Add New Page');
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
