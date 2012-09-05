@@ -57,6 +57,19 @@ class Catalog extends CI_Controller {
     $this->load->view('category/showitems', $data);
     $this->load->view('templates/footer', $data);
   }
-  
+
+  public function productDetails( $id ) {
+    $this->load->helper('url');
+
+    $data['loggedin'] = $this->session->userdata('loggedIn');
+    $data['categories'] = $this->db_model->getCategory();
+
+    $data['product'] = $this->db_model->getItem($id);
+    $data['title']   = $data['product']['name'];
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('category/productDeatils-template', $data);
+    $this->load->view('templates/footer', $data);
+  }
 }
 ?>

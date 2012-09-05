@@ -9,7 +9,7 @@
             </div>
             <div class="product_img">
                 <a href="<?php base_url() ?>/product-details/<?php echo $item['slug']; ?>/">
-                    <img class="product_img" border="0" title="" alt="" src="<?php base_url();?><?php echo IMAGEPATH; ?>/products/<?php echo $item['image']; ?>">
+                    <img  width="150" height="150" class="product_img" border="0" title="" alt="" src="<?php base_url();?><?php echo IMAGEPATH; ?>/products/<?php echo $item['image']; ?>">
                 </a>
             </div>
             <div class="prod_price">

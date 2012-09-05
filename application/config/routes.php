@@ -62,7 +62,8 @@ $route['page/sign-in']                  = 'staticpages/signin';
 $route['page/sign-up']                  = 'staticpages/signup';
 $route['page/logout']                   = 'staticpages/signout';
 $route['page/(:any)']                   = 'staticpages/page/$1';
-/* Catalog Pages Routes */
+/* Product Pages Routes */
+$route['product-details/(:num)/(:any)'] = 'catalog/productDetails/$1';
 $route['category/(:any)']               = 'catalog/category/$1';
 $route['(:any)']                        = 'catalog/view/$1';
 
