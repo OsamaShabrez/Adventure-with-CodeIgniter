@@ -66,6 +66,8 @@ $route['page/(:any)']                   = 'staticpages/page/$1';
 $route['product-details/(:num)/(:any)'] = 'catalog/productDetails/$1';
 $route['cart']                          = 'catalog/cart';
 $route['add-to-cart/(:num)/(:any)']     = 'catalog/addToCart/$1';
+$route['update-cart']                   = 'catalog/updateCart';
+$route['remove-cart/(:any)']            = 'catalog/removeCart/$1';
 $route['category/(:any)']               = 'catalog/category/$1';
 $route['(:any)']                        = 'catalog/view/$1';
 

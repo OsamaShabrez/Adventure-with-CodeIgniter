@@ -16,6 +16,17 @@ class Catalog extends CI_Controller {
 
   public function addToCart( $id ) {
     $product = $this->db_model->getItem($id);
+    foreach ($this->cart->contents() as $items) {
+        if( $items['id'] == $product['id'] ) {
+            $data = array(
+                'rowid' => $items['rowid'],
+                'qty'   => $items['qty'] + 1
+            );
+            $this->cart->update($data);
+            $ref = $this->input->server('HTTP_REFERER', TRUE);
+            redirect($ref, 'location');
+        }
+    }
     $data = array(
         'id'      => $product['id'],
         'qty'     => 1,
@@ -27,9 +38,38 @@ class Catalog extends CI_Controller {
     redirect($ref, 'location');
   }
 
+  public function removeCart( $rowid ) {
+    $data = array(
+        'rowid' => $rowid,
+        'qty'   => 0
+    );
+    $this->cart->update($data);
+    $ref = $this->input->server('HTTP_REFERER', TRUE);
+    redirect($ref, 'location');
+  }
+
+  public function updateCart() {
+    foreach ($this->cart->contents() as $items) {
+      $data = array(
+        'rowid' => $items['rowid'],
+        'qty'   => $this->input->post($items['id'])
+      );
+      $this->cart->update($data);
+    }
+    $ref = $this->input->server('HTTP_REFERER', TRUE);
+    redirect($ref, 'location');
+  }
+
   public function cart() {
     $this->load->helper('form');
-    $this->load->view('cart/viewCart');
+
+    $data['title'] = 'Shopping Cart Details';
+    $data['loggedin'] = $this->session->userdata('loggedIn');
+    $data['categories'] = $this->db_model->getCategory();
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('cart/viewCart', $data);
+    $this->load->view('templates/footer', $data);
   }
 
   public function view($page = 'index') {

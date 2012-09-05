@@ -7,6 +7,7 @@ class StaticPages extends CI_Controller {
     $this->load->model('db_model');
     $this->load->library('session');
     $this->load->helper('url');
+    $this->load->library('cart');
 
     if( $this->session->userdata('loggedIn') === true && $this->session->userdata('staff') === true ) {
         redirect('admin/index');
