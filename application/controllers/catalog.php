@@ -84,6 +84,7 @@ class Catalog extends CI_Controller {
     $data['categories'] = $this->db_model->getCategory();
 
     $data['product'] = $this->db_model->getItem($id);
+    $data['title']    = ucwords(str_replace( "-", " ", $data['product']['name']) ); // Capitalize the first letter
 
     $this->load->view('templates/header', $data);
     $this->load->view('category/productDeatils-template', $data);
