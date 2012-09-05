@@ -18,7 +18,7 @@
                 <div class="specifications">
                     Availability: <span class="blue">In stock</span><br>
                     <div class="prod_price_big"><span class="price">PKR <?php echo $product['price']; ?></span></div>
-                    <a class="addtocart" href="/ise/product-details.php?productid=18&amp;addcart=18">add to cart</a>
+                    <a class="addtocart" href="<?php echo base_url() ?>add-to-cart/<?php echo $product['id'] . '/' . $product['slug']; ?>.html">add to cart</a>
                 </div>
             </div>                        
         </div>

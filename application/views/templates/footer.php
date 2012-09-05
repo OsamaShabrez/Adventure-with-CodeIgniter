@@ -2,11 +2,11 @@
                         <div class="shopping_cart">
                         <div class="cart_title">Shopping cart</div>
                         <div class="cart_details">
-                            0 item(s) in cart<br />
+                            <?php echo $this->cart->total_items(); ?> item(s) in cart<br />
                             <span class="border_cart"></span>
-                            Total: <span class="price">0.00 PKR</span>
+                            Total: <span class="price"><?php echo $this->cart->total();?> PKR</span>
                         </div>
-                        <div class="cart_icon"><a href="check-out.php" title="header=[View Cart] body=[&nbsp;] fade=[on]"><img src="<?php echo base_url(); ?><?php echo IMAGEPATH; ?>/shoppingcart.png" alt="" title="" width="48" height="48" border="0" /></a></div>
+                        <div class="cart_icon"><a href="cart.html" title="header=[View Cart] body=[&nbsp;] fade=[on]"><img src="<?php echo base_url(); ?><?php echo IMAGEPATH; ?>/shoppingcart.png" alt="" title="" width="48" height="48" border="0" /></a></div>
                     </div>
                     <div class="title_box">Currently Hot</div>
                     <ul class="left_menu">

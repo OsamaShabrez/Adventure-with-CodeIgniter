@@ -25,7 +25,7 @@
             <div class="prod_price">
                 <span class="price"> <?php echo $product['price']; ?></span>
             </div>
-            <a class="left_bt" title="header=[Add to cart] body=[&nbsp;] fade=[on]" href="/ise/?addcart=18">
+            <a class="left_bt" title="header=[Add to cart] body=[&nbsp;] fade=[on]" href="<?php echo base_url() ?>add-to-cart/<?php echo $product['id'] . '/' . $product['slug']; ?>.html">
                 <img border="0" class="left_bt" title="" alt="" src="<?php echo base_url() . IMAGEPATH; ?>/cart.gif">
             </a>
             <a class="prod_details" href="<?php echo base_url() ?>product-details/<?php echo $product['id'] . '/' . $product['slug']; ?>.html">details</a>

@@ -7,10 +7,29 @@ class Catalog extends CI_Controller {
     $this->load->model('db_model');
     $this->load->library('session');
     $this->load->helper('url');
+    $this->load->library('cart');
 
     if( $this->session->userdata('loggedIn') === true && $this->session->userdata('staff') === true ) {
         redirect('admin/index');
     }
+  }
+
+  public function addToCart( $id ) {
+    $product = $this->db_model->getItem($id);
+    $data = array(
+        'id'      => $product['id'],
+        'qty'     => 1,
+        'price'   => $product['price'],
+        'name'    => $product['name'],
+    );
+    $this->cart->insert($data); 
+    $ref = $this->input->server('HTTP_REFERER', TRUE);
+    redirect($ref, 'location');
+  }
+
+  public function cart() {
+    $this->load->helper('form');
+    $this->load->view('cart/viewCart');
   }
 
   public function view($page = 'index') {
@@ -65,7 +84,6 @@ class Catalog extends CI_Controller {
     $data['categories'] = $this->db_model->getCategory();
 
     $data['product'] = $this->db_model->getItem($id);
-    $data['title']   = $data['product']['name'];
 
     $this->load->view('templates/header', $data);
     $this->load->view('category/productDeatils-template', $data);
