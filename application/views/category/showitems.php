@@ -15,18 +15,18 @@
         <div class="top_prod_box"></div>
         <div class="center_prod_box">
             <div class="product_title">
-                <a href="<?php base_url() ?>/product-details/<?php echo $product['slug']; ?>/"><?php echo $product['name']; ?></a>
+                <a href="<?php echo base_url() ?>/product-details/<?php echo $product['slug']; ?>/"><?php echo $product['name']; ?></a>
             </div>
             <div class="product_img">
-                <a href="<?php base_url() ?>/product-details/<?php echo $product['slug']; ?>/">
-                    <img class="product_img" border="0" title="" alt="" src="<?php echo base_url();?><?php echo IMAGEPATH; ?>/products/<?php echo $product['image']; ?>">
+                <a href="<?php echo base_url() ?>/product-details/<?php echo $product['slug']; ?>/">
+                    <img class="product_img" border="0" title="" alt="" src="<?php echo base_url() . IMAGEPATH; ?>/products/<?php echo $product['image']; ?>">
                 </a>
             </div>
             <div class="prod_price">
                 <span class="price"> <?php echo $product['price']; ?></span>
             </div>
             <a class="left_bt" title="header=[Add to cart] body=[&nbsp;] fade=[on]" href="/ise/?addcart=18">
-                <img border="0" class="left_bt" title="" alt="" src="<?php echo base_url(); ?><?php echo IMAGEPATH; ?>/cart.gif">
+                <img border="0" class="left_bt" title="" alt="" src="<?php echo base_url() . IMAGEPATH; ?>/cart.gif">
             </a>
             <a class="prod_details" href="product-details.php?productid=18">details</a>
         </div>
