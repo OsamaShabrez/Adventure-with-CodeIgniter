@@ -6,19 +6,26 @@ class Db_model extends CI_Model {
     $this->load->database();
   }
 
-  public function getItem( $pagination = FALSE ) {
-    if( $pagination === FALSE ) {
+  public function getItem( $catId = false ) {
+    if( $catId === false ) {
       $query = $this->db->get( 'products' );
       return $query->result_array();
+    } if (is_numeric($catId)) {
+        $query = $this->db->get_where('products', array('id' => $catId));
+        return $query->row_array();
+    } else {
+        $this->db->select('p.id, p.name, p.price, p.image, p.description, p.slug, p.catId');
+        $this->db->from('products p');
+        $this->db->join('category c', 'c.id = p.catId');
+        $this->db->where('c.slug = ', $catId);
+        $query = $this->db->get();
+        return $query->result_array();
     }
-    $query = $this->db->get_where( 'products', $pagination * 2, ($pagination + 1) * 2 );
-    $this->db->order_by("id", "desc");
-    return $query->result_array();
   }
   
   public function getPage( $slug = false ) {
     if( $slug === FALSE ) {
-        $query = $this->db->get('static_pages');
+        $query = $this->db->get("static_pages");
         return $query->result_array();
     }
     $query = $this->db->get_where('static_pages', array('slug' => $slug));

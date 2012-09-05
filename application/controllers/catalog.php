@@ -43,12 +43,14 @@ class Catalog extends CI_Controller {
     }
 
     $this->load->helper('url');
+
     $data['categories'] = $this->db_model->getCategory();
+    $data['products'] = $this->db_model->getItem($category);
 
     if ( ( $data['content'] = $this->db_model->getCategory($category) ) == FALSE ) {
         show_404('category===content function in catalog.php called');
     }
-    $data['title'] = ucwords(str_replace( "-", " ", $data['content']['name']) ); // Capitalize the first letter
+    $data['title']    = ucwords(str_replace( "-", " ", $data['content']['name']) ); // Capitalize the first letter
     $data['loggedin'] = $this->session->userdata('loggedIn');
 
     $this->load->view('templates/header', $data);
