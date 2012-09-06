@@ -17,6 +17,7 @@
                 <div class="product_title_big"><?php echo $product['name']; ?></div>
                 <div class="specifications">
                     Availability: <span class="blue">In stock</span><br>
+                    <?php echo nl2br($product['description']); ?>
                     <div class="prod_price_big"><span class="price">PKR <?php echo $product['price']; ?></span></div>
                     <a class="addtocart" href="<?php echo base_url() ?>add-to-cart/<?php echo $product['id'] . '/' . $product['slug']; ?>.html">add to cart</a>
                 </div>
