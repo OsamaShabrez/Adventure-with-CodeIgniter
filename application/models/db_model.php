@@ -57,7 +57,20 @@ class Db_model extends CI_Model {
     }
     $query = $query->row();
     if ($query->staff == true) return 1;
-    return 0;
+    return $query;
+  }
+
+  public function createUser( $name, $email, $username, $password, $contact) {
+    $data = array(
+        'username' => $username,
+        'password' => $password,
+        'name'  => $name,
+        'email' => $email,
+        'contactno' => $contact,
+        'staff' => STAFFACCOUNT
+    );
+    if( $this->db->insert('users', $data) ) return true;
+    return false;
   }
 
   public function addProduct( $name, $price, $image, $description, $slug, $caetgory) {

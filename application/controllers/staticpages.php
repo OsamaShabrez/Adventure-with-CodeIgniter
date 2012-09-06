@@ -14,6 +14,24 @@ class StaticPages extends CI_Controller {
     }
   }
 
+  private function generatePassword( ) {
+    $length=9;
+    $alphanumeric = 'aeuyBDGHJLMNPQRSTVWXZAEUY23456789';
+    $specialchars = '!^*()@#$%><';
+    $password = '';
+    $alt = time() % 2;
+    for ($i = 0; $i < $length; $i++) {
+            if ($alt == 1) {
+                    $password .= $specialchars[(rand() % strlen($specialchars))];
+                    $alt = 0;
+            } else {
+                    $password .= $alphanumeric[(rand() % strlen($alphanumeric))];
+                    $alt = 1;
+            }
+    }
+    return $password;
+  }
+
   private function processContactForm() {
     $this->load->library('form_validation');
     $this->load->helper('form');
@@ -63,15 +81,55 @@ class StaticPages extends CI_Controller {
 
     if ($this->form_validation->run() === false ) {
         $this->load->view('templates/header', $data);
-        $this->load->view('page/contactus-template', $data);
+        $this->load->view('page/contactUs-template', $data);
         $this->load->view('templates/footer', $data);
     } else {
         $this->processContactForm();
     }
   }
 
+  public function processSingup() {
+    $this->load->library('form_validation');
+
+    $this->form_validation->set_rules('name',    'Name',    'trim|required|xss_clean');
+    $this->form_validation->set_rules('email',   'Email',   'required|valid_email');
+    $this->form_validation->set_rules('username','Username','xss_clean');
+    $this->form_validation->set_rules('contact', 'Contact', 'required|xss_clean');
+
+    $this->load->helper('url');
+    
+    if( $this->form_validation->run() === false ) {
+        redirect('/page/sign-up', $this->showContactForm());
+    } else {
+        $name           = $this->input->post('name');
+        $email          = $this->input->post('email');
+        $username       = $this->input->post('username');
+        $contact        = $this->input->post('contact');
+        $password       = $this->generatePassword();
+        $hashedpassword = md5( $password . sha1($password) );
+
+        $this->load->library('email');
+
+        $this->email->from(EMAILSENDER, EMAILSENDERNAME);
+        $this->email->to($email);
+        $subject = 'GreenTel account password information';
+
+        $this->email->subject( $subject );
+        $this->email->message("Hi {$name}\r\nYou account details are:\r\nusername: {$username}\r\npassword: {$password}\r\n\r\nThankyou.");
+
+        $this->email->send();
+        if( $this->db_model->createUser( $name, $email, $username, $hashedpassword, $contact) ) {
+          $this->session->set_flashdata('v_message', 'Please check your email inbox for password details');
+          redirect('page/sign-in');
+        } else {
+          $this->session->set_flashdata('iv_message', 'Something went wrong, please try again');
+          redirect('page/sign-up');
+        }
+    }
+  }
+
   public function signIn() {
-    $data['title'] = 'Sign In';
+    $data['title'] = SIGNIN;
 
     $this->load->library('form_validation');
     $this->load->helper('form');
@@ -86,7 +144,7 @@ class StaticPages extends CI_Controller {
 
     if( $this->form_validation->run() === false ) {
         $this->load->view('templates/header', $data);
-        $this->load->view('page/signin-template', $data);
+        $this->load->view('page/signIn-template', $data);
         $this->load->view('templates/footer', $data);
     } else {
         $this->processSignIn();
@@ -123,14 +181,25 @@ class StaticPages extends CI_Controller {
                 redirect('admin/index');
             } else {
                 $this->session->set_userdata('staff', false);
-                redirect('');
+                $this->session->set_userdata('usrid', $status->id);
+                redirect(base_url());
             }
         }
     }
   }
 
   public function signUp() {
-    echo 'SignUp';
+    $this->load->helper('form');
+
+    $this->load->helper('url');
+
+    $data['categories'] = $this->db_model->getCategory();
+    $data['loggedin']   = $this->session->userdata('loggedIn');
+    $data['title'] = SIGNUP;
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('page/signUp-template', $data);
+    $this->load->view('templates/footer', $data);
   }
 
   public function signOut() {

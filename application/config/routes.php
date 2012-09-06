@@ -60,6 +60,7 @@ $route['page/processcontactform']       = 'staticpages/processcontactform';
 $route['page/contact-us']               = 'staticpages/showcontactform';
 $route['page/sign-in']                  = 'staticpages/signin';
 $route['page/sign-up']                  = 'staticpages/signup';
+$route['page/process-singup']           = 'staticpages/processSingup';
 $route['page/logout']                   = 'staticpages/signout';
 $route['page/(:any)']                   = 'staticpages/page/$1';
 /* Product Pages Routes */
@@ -68,6 +69,7 @@ $route['cart']                          = 'catalog/cart';
 $route['add-to-cart/(:num)/(:any)']     = 'catalog/addToCart/$1';
 $route['update-cart']                   = 'catalog/updateCart';
 $route['remove-cart/(:any)']            = 'catalog/removeCart/$1';
+$route['process-order']                 = 'catalog/processCart';
 $route['category/(:any)']               = 'catalog/category/$1';
 $route['(:any)']                        = 'catalog/view/$1';
 

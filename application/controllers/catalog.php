@@ -60,6 +60,20 @@ class Catalog extends CI_Controller {
     redirect($ref, 'location');
   }
 
+  public function processCart() {
+      if( ! $this->session->userdata('loggedIn') ) {
+          $this->session->set_flashdata('iv_message', 'You need to Sign In first before checkout');
+          redirect(base_url() . 'page/sign-in');
+      } else {
+          $this->load->helper('url');
+          $this->load->helper('form');
+
+          $data['loggedin']   = $this->session->userdata('loggedIn');
+          $data['categories'] = $this->db_model->getCategory();
+
+      }
+  }
+
   public function cart() {
     $this->load->helper('form');
 

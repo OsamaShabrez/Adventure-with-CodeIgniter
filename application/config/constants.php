@@ -63,5 +63,10 @@ define('CKEDITOR',              '/ckeditor/ckeditor.js');
 define('UPLOADPATH',            './images/products');
 define('MANAGEPAGES',           'Manage Static Pages');
 define('ADDNEWPAGE',            'Add New Page');
+define('SIGNUP',                'Sign up');
+define('SIGNIN',                'Sign In');
+define('EMAILSENDERNAME',       'GreenTel');
+define('EMAILSENDER',           'no-reply@greentel.com');
+define('STAFFACCOUNT',          false);
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

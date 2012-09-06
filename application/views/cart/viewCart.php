@@ -40,7 +40,7 @@
             <?php endforeach; ?>
             <tr>
             <td style="font-variant: small-caps; color: #099; font-weight: bold;">
-                <input type="submit" value="    Update" style="cursor: pointer;font-variant: inherit; font-weight: inherit; color: inherit; background-image: url('images/checked.png'); background-repeat: no-repeat; border: hidden; background-color: inherit;">
+                <input type="submit" value="    Update" style="cursor: pointer;font-variant: inherit; font-weight: inherit; color: inherit; background-image: url('<?php echo base_url(); ?>images/checked.png'); background-repeat: no-repeat; border: hidden; background-color: inherit;">
             </td>
             <td style="text-align: right; font-variant: small-caps; font-weight: bold; color: #099;" colspan="2">Total Payable:&nbsp;&nbsp;&nbsp;</td>
             <td style="padding: 0 30px 0 0;text-align: right;"><?php echo $this->cart->total(); ?> RS</td>
@@ -48,7 +48,7 @@
             </form>
         </tbody>
     </table>
-    <div style="margin: 0px auto;text-align: center;"><a title="header=[Checkout] body=[&nbsp;] fade=[on]" style="text-decoration: none; color: #ff0000; font-weight: bold; font-size: 14px; font-variant: small-caps;" href="process-order.php"><img width="48" height="48" border="0" title="" alt="" src="images/shoppingcart-full.png"><br>Check Out</a></div>
+    <div style="margin: 0px auto;text-align: center;"><a title="header=[Checkout] body=[&nbsp;] fade=[on]" style="text-decoration: none; color: #ff0000; font-weight: bold; font-size: 14px; font-variant: small-caps;" href="process-order.html"><img width="48" height="48" border="0" title="" alt="" src="<?php echo base_url(); ?>images/shoppingcart-full.png"><br>Check Out</a></div>
     <?php endif; ?>
     </div>
 <div class="bottom_prod_box_big"></div>                                
