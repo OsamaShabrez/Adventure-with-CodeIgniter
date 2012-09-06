@@ -14,6 +14,17 @@ class StaticPages extends CI_Controller {
     }
   }
 
+  public function myAccount() {
+    $data['title'] = MYACCOUNT;
+    $data['categories'] = $this->db_model->getCategory();
+    $data['loggedin']   = $this->session->userdata('loggedIn');
+    $data['user']       = $this->db_model->getUserInfo($this->session->userdata('usrid'));
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('page/myAccount-template', $data);
+    $this->load->view('templates/footer', $data);
+  }
+
   private function generatePassword( ) {
     $length=9;
     $alphanumeric = 'aeuyBDGHJLMNPQRSTVWXZAEUY23456789';

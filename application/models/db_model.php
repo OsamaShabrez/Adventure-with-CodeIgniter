@@ -133,6 +133,11 @@ class Db_model extends CI_Model {
     if( $this->db->insert('ordersmeta', $data) ) return true;
     return false;
   }
+  
+  public function getUserInfo( $id ) {
+    $query = $this->db->get_where('users', array('id' => $id));
+    return $query->row_array();
+  }
 }
 
 ?>
