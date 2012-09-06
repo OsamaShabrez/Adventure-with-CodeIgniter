@@ -187,8 +187,9 @@ class StaticPages extends CI_Controller {
             redirect( 'page/sign-in' );
         } else {
             $this->session->set_userdata('loggedIn', true);
-            if( $status === 1) {
+            if( $status->staff == 1) {
                 $this->session->set_userdata('staff', true);
+                $this->session->set_userdata('usrid', $status->id);
                 redirect('admin/index');
             } else {
                 $this->session->set_userdata('staff', false);
@@ -217,6 +218,7 @@ class StaticPages extends CI_Controller {
     $this->load->helper('url');
 
     $this->session->unset_userdata('staff');
+    $this->session->unset_userdata('usrid');
     $this->session->set_userdata('loggedIn', false);
     $this->session->set_flashdata('v_message', 'Logged out successfully');
 

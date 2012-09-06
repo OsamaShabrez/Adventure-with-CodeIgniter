@@ -15,7 +15,7 @@ class Catalog extends CI_Controller {
   }
 
   public function addToCart( $id ) {
-    $product = $this->db_model->getItem($id);
+    $product = $this->db_model->getProduct($id);
     foreach ($this->cart->contents() as $items) {
         if( $items['id'] == $product['id'] ) {
             $data = array(
@@ -121,7 +121,7 @@ class Catalog extends CI_Controller {
 
     $data['loggedin'] = $this->session->userdata('loggedIn');
 
-    $data['products'] = $this->db_model->getItem();
+    $data['products'] = $this->db_model->getProduct();
 
     $this->load->view('templates/header', $data);
     $this->load->view('catalog/'.$page, $data);
@@ -136,7 +136,7 @@ class Catalog extends CI_Controller {
     $this->load->helper('url');
 
     $data['categories'] = $this->db_model->getCategory();
-    $data['products'] = $this->db_model->getItem($category);
+    $data['products'] = $this->db_model->getProduct($category);
 
     if ( ( $data['content'] = $this->db_model->getCategory($category) ) == FALSE ) {
         show_404('category===content function in catalog.php called');
@@ -155,7 +155,7 @@ class Catalog extends CI_Controller {
     $data['loggedin'] = $this->session->userdata('loggedIn');
     $data['categories'] = $this->db_model->getCategory();
 
-    $data['product'] = $this->db_model->getItem($id);
+    $data['product'] = $this->db_model->getProduct($id);
     $data['title']    = ucwords(str_replace( "-", " ", $data['product']['name']) ); // Capitalize the first letter
 
     $this->load->view('templates/header', $data);

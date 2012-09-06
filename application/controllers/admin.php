@@ -61,7 +61,7 @@ class Admin extends CI_Controller {
     $this->load->helper('form');
 
     $data['title']      = MANAGEPRODUCTS;
-    $data['products']   = $this->db_model->getItem();
+    $data['products']   = $this->db_model->getProduct();
     $data['categories'] = $this->db_model->getCategory();
 
     $this->load->view('admin/admin-header', $data);
@@ -181,41 +181,62 @@ class Admin extends CI_Controller {
     }
   }
 
-  public function manageStock() {
-    $this->load->helper('url');
-
-    $data['title'] = 'Manage Stock';
-
-    $this->load->view('admin/admin-header', $data);
-    $this->load->view('admin/admin-footer', $data);
-  }
-
   public function manageOrders() {
     $this->load->helper('url');
 
-    $data['title'] = 'Manage Orders';
-
+    $data['title']  = MANAGEORDERS;
+    $data['orders'] = $this->db_model->getOrder();
+    foreach( $data['orders'] as &$order ) {
+        $userinfo = $this->db_model->getUserInfo($order['userId']);
+        $order['username'] = $userinfo['name'];
+        $order['details'] = $this->db_model->getOrder($order['id']);
+        foreach($order['details'] as &$product) {
+            $productdetails = $this->db_model->getProduct($product['productid']);
+            $product['productname'] = $productdetails['name'];
+        }
+    }
     $this->load->view('admin/admin-header', $data);
+    $this->load->view('admin/manageOrders-template', $data);
     $this->load->view('admin/admin-footer', $data);
   }
 
+  public function processOrder( $id ) {
+    $this->db_model->processOrder( $id );
+    $this->session->set_flashdata('v_message', 'Order processed successfully');
+    redirect('admin/manage-orders');
+  }
   public function profile() {
     $this->load->helper('url');
 
-    $data['title'] = 'Edit Profile';
+    $data['title'] = MYACCOUNT;
+    $data['user']  = $this->db_model->getUserInfo($this->session->userdata('usrid'));
 
     $this->load->view('admin/admin-header', $data);
+    $this->load->view('admin/myAccount-template', $data);
     $this->load->view('admin/admin-footer', $data);
   }
 
-  public function lognOut() {
+  public function signOut() {
     $this->load->helper('url');
 
     $this->session->unset_userdata('staff');
+    $this->session->unset_userdata('usrid');
     $this->session->set_userdata('loggedIn', false);
     $this->session->set_flashdata('v_message', 'Logged out successfully');
 
     redirect('page/sign-in');
   }
+
+  public function display($array) {
+     $newline = "<br>";
+     $output="";
+     foreach($array as $key => $value) {
+        if (is_array($value) || is_object($value)) {
+            $value = "Array()" . $newline . "(<ul>" . $this->display($value) . "</ul>)" . $newline;
+        }
+        $output .= "[$key] => " . $value . $newline;
+     }
+     return $output;
+    }
 }
 ?>

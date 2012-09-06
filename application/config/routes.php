@@ -50,11 +50,11 @@ $route['admin/process-update']          = 'admin/processProductUpdate';
 $route['admin/process-new-product']     = 'admin/addNewProduct';
 $route['admin/process-new-category']    = 'admin/addNewCategory';
 $route['admin/remove-product/(:num)']   = 'admin/removeProduct/$1';
-$route['admin/remove-category/(:num)']   = 'admin/removeCategory/$1';
-$route['admin/manage-stock']            = 'admin/manageStock';
+$route['admin/remove-category/(:num)']  = 'admin/removeCategory/$1';
 $route['admin/manage-orders']           = 'admin/manageOrders';
+$route['admin/process-order/(:num)']    = 'admin/processOrder/$1';
 $route['admin/profile']                 = 'admin/profile';
-$route['admin/logout']                  = 'admin/lognout';
+$route['admin/logout']                  = 'admin/signOut';
 /* Static Pages Routes */
 $route['page/processcontactform']       = 'staticpages/processcontactform';
 $route['page/contact-us']               = 'staticpages/showcontactform';

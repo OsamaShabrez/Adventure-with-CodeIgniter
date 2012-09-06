@@ -6,7 +6,7 @@ class Db_model extends CI_Model {
     $this->load->database();
   }
 
-  public function getItem( $catId = false ) {
+  public function getProduct( $catId = false ) {
     if( $catId === false ) {
       $query = $this->db->get( 'products' );
       return $query->result_array();
@@ -30,6 +30,15 @@ class Db_model extends CI_Model {
     }
     $query = $this->db->get_where('static_pages', array('slug' => $slug));
     return $query->row_array();
+  }
+
+  public function getOrder( $id = false ) {
+    if( $id === FALSE ) {
+        $query = $this->db->get("orders");
+        return $query->result_array();
+    }
+    $query = $this->db->get_where('ordersmeta', array('orderid' => $id));
+    return $query->result_array();
   }
 
   public function updatePage( $id, $description) {
@@ -56,7 +65,6 @@ class Db_model extends CI_Model {
         return false;
     }
     $query = $query->row();
-    if ($query->staff == true) return 1;
     return $query;
   }
 
@@ -137,6 +145,13 @@ class Db_model extends CI_Model {
   public function getUserInfo( $id ) {
     $query = $this->db->get_where('users', array('id' => $id));
     return $query->row_array();
+  }
+  
+  public function processOrder( $id ) {
+    $data = array('status' => true);
+    $this->db->where('id', $id);
+    if( $this->db->update('orders', $data) ) return true;
+    return false;
   }
 }
 

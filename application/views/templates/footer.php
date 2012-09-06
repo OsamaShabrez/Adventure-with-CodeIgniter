@@ -8,11 +8,6 @@
                         </div>
                         <div class="cart_icon"><a href="<?php echo base_url(); ?>cart.html" title="header=[View Cart] body=[&nbsp;] fade=[on]"><img src="<?php echo base_url(); ?><?php echo IMAGEPATH; ?>/shoppingcart.png" alt="" title="" width="48" height="48" border="0" /></a></div>
                     </div>
-                    <div class="title_box">Currently Hot</div>
-                    <ul class="left_menu">
-                        <li class='even'><a href=''>Even</a></li>
-                        <li class='odd'><a href=''>Odd</a></li>
-                    </ul>      
                 </div><!-- end of right content -->   
             </div><!-- end of main content -->
             <div class="footer">
