@@ -66,18 +66,36 @@ class Catalog extends CI_Controller {
           redirect(base_url() . 'page/sign-in');
       } else {
           $this->load->helper('url');
-          $this->load->helper('form');
-
-          $data['loggedin']   = $this->session->userdata('loggedIn');
-          $data['categories'] = $this->db_model->getCategory();
-
+          $userid = $this->session->userdata('usrid');
+          $date   = date("F j, Y, g:i a");
+          $total = $this->cart->total();
+          $orderId = $this->db_model->addOrder( $userid, $date, $total, false );
+          if ( $orderId === false ) {
+          } else {
+              foreach ($this->cart->contents() as $item) {
+                  $this->db_model->addOrderMeta( $orderId, $item['id'], $item['qty'], $item['price']);
+              }
+          }
+          redirect('order-placed');
       }
+  }
+
+  public function orderPlaced() {
+    $this->load->helper('form');
+
+    $data['title'] = ORDERPLACEDTITLE;
+    $data['loggedin'] = $this->session->userdata('loggedIn');
+    $data['categories'] = $this->db_model->getCategory();
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('cart/orderPlaced-template', $data);
+    $this->load->view('templates/footer', $data);
   }
 
   public function cart() {
     $this->load->helper('form');
 
-    $data['title'] = 'Shopping Cart Details';
+    $data['title'] = CARTTITLE;
     $data['loggedin'] = $this->session->userdata('loggedIn');
     $data['categories'] = $this->db_model->getCategory();
 

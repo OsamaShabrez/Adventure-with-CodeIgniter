@@ -68,5 +68,7 @@ define('SIGNIN',                'Sign In');
 define('EMAILSENDERNAME',       'GreenTel');
 define('EMAILSENDER',           'no-reply@greentel.com');
 define('STAFFACCOUNT',          false);
+define('CARTTITLE',             'Shopping Cart Details');
+define('ORDERPLACEDTITLE',      'Order Placed Successfully');
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

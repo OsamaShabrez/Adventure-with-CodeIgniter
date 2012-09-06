@@ -34,7 +34,7 @@
             <tr>
                 <td><a href="<?php echo base_url(); ?>remove-cart/<?php echo $items['rowid'];?>.html"><img src="images/d.png"></a> &nbsp;<?php echo $items['name']; ?></td>
                 <td><input type="text" onblur="clickrecall(this,'1')" onclick="clickclear(this, '1')" style="margin-left: 5px; text-align: right;" name="<?php echo $items['id']; ?>" maxlength="3" size="3" value="<?php echo $items['qty']; ?>"></td>
-                <td style="text-align: center;"><?php echo $items['price']; ?></td>
+                <td style="text-align: center;">PKR <?php echo $items['price']; ?></td>
                 <td style="text-align: center;padding: 0px;"><?php echo $items['qty']*$items['price']; ?> RS</td>
             </tr>
             <?php endforeach; ?>

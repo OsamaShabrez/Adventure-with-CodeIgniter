@@ -111,6 +111,28 @@ class Db_model extends CI_Model {
     if( $this->db->delete('category') ) return true;
     return false;
   }
+
+  public function addOrder( $userid, $date, $total, $status ) {
+    $data = array (
+        'date'       => $date,
+        'totalamount' => $total,
+        'userId'     => $userid,
+        'status'     => $status
+    );
+    if( $this->db->insert('orders', $data) ) return $this->db->insert_id();
+    return false;
+  }
+  
+  public function addOrderMeta( $orderId, $pId, $qty, $price) {
+    $data = array(
+        'orderid'   => $orderId,
+        'productid' => $pId,
+        'quantity'  => $qty,
+        'unitPrice' => $price
+    );
+    if( $this->db->insert('ordersmeta', $data) ) return true;
+    return false;
+  }
 }
 
 ?>

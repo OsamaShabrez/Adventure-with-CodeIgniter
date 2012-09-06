@@ -69,6 +69,7 @@ $route['cart']                          = 'catalog/cart';
 $route['add-to-cart/(:num)/(:any)']     = 'catalog/addToCart/$1';
 $route['update-cart']                   = 'catalog/updateCart';
 $route['remove-cart/(:any)']            = 'catalog/removeCart/$1';
+$route['order-placed']             = 'catalog/orderPlaced';
 $route['process-order']                 = 'catalog/processCart';
 $route['category/(:any)']               = 'catalog/category/$1';
 $route['(:any)']                        = 'catalog/view/$1';
