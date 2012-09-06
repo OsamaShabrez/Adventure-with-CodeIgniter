@@ -26,7 +26,7 @@
                     </div>
                     <div class="form_row">
                         <label class="contact">Password :</label>
-                        <input type="text" maxlength="25" id="password" name="password" value="" class="contact_input">
+                        <input type="password" maxlength="25" id="password" name="password" value="" class="contact_input">
                     </div>
                     <div class="form_row">
                             <input type="submit" value="Sign In" class="button"><br>
